@@ -13,9 +13,9 @@ const Contact: React.FC = () => {
   const [showOopsText, setShowOopsText] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isHoldingHandshake, setIsHoldingHandshake] = useState(false);
-  const shakeStartTime = useRef<number | null>(null);
-  const shakeTimer = useRef<NodeJS.Timeout | null>(null);
-  const shakeActive = useRef(false);
+  const shakeStartRef = useRef<number | null>(null);
+  const shakeActiveRef = useRef(false);
+  const shakeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Check if device is mobile/tablet
   useEffect(() => {
@@ -31,116 +31,71 @@ const Contact: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Shake detection for mobile devices
-  useEffect(() => {
-    if (!isMobile) return;
-
-    let lastUpdate = 0;
-    let lastX = 0, lastY = 0, lastZ = 0;
-    let shakeCount = 0;
-    const SHAKE_THRESHOLD = 15;
-
-    const handleShake = (event: DeviceMotionEvent) => {
-      const current = event.accelerationIncludingGravity;
-      if (!current) return;
-
-      const currentTime = new Date().getTime();
-      if ((currentTime - lastUpdate) > 100) {
-        const diffTime = currentTime - lastUpdate;
-        lastUpdate = currentTime;
-
-        const speed = Math.abs(current.x! + current.y! + current.z! - lastX - lastY - lastZ) / diffTime * 10000;
-
-        if (speed > SHAKE_THRESHOLD) {
-          shakeCount++;
-          if (shakeCount >= 3) { // Require 3 shakes to trigger
-            triggerYogurtSplash();
-            setShowOopsText(true);
-            setTimeout(() => setShowOopsText(false), 10000);
-            shakeCount = 0;
-          }
-        }
-
-        lastX = current.x!;
-        lastY = current.y!;
-        lastZ = current.z!;
-      }
-    };
-
-    // Request device motion permission on iOS
-    if (typeof DeviceMotionEvent !== 'undefined' && typeof (DeviceMotionEvent as any).requestPermission === 'function') {
-      (DeviceMotionEvent as any).requestPermission().then((permission: string) => {
-        if (permission === 'granted') {
-          window.addEventListener('devicemotion', handleShake);
-        }
-      });
-    } else {
-      window.addEventListener('devicemotion', handleShake);
-    }
-
-    return () => {
-      window.removeEventListener('devicemotion', handleShake);
-    };
-  }, [isMobile]);
-
-  // New: Custom shake detection for handshake hold
+  // Remove the old shake detection useEffect
+  // Add new shake detection logic for handshake hold
   useEffect(() => {
     if (!isMobile || !isHoldingHandshake) return;
+
     let lastUpdate = 0;
     let lastX = 0, lastY = 0, lastZ = 0;
-    let shakeCount = 0;
+    let shaking = false;
+    let shakeStart = 0;
     const SHAKE_THRESHOLD = 15;
-    let shakeDetected = false;
+    const REQUIRED_SHAKE_DURATION = 5000; // 5 seconds
 
     const handleShake = (event: DeviceMotionEvent) => {
       const current = event.accelerationIncludingGravity;
       if (!current) return;
+
       const currentTime = new Date().getTime();
       if ((currentTime - lastUpdate) > 100) {
         const diffTime = currentTime - lastUpdate;
         lastUpdate = currentTime;
+
         const speed = Math.abs(current.x! + current.y! + current.z! - lastX - lastY - lastZ) / diffTime * 10000;
+
         if (speed > SHAKE_THRESHOLD) {
-          if (!shakeActive.current) {
-            shakeActive.current = true;
-            shakeStartTime.current = Date.now();
-            shakeTimer.current = setTimeout(() => {
-              // 5 seconds of shaking
+          if (!shaking) {
+            shaking = true;
+            shakeStart = currentTime;
+          } else {
+            // If shaking continues
+            if (currentTime - shakeStart >= REQUIRED_SHAKE_DURATION) {
+              shaking = false;
+              shakeStart = 0;
+              setIsHoldingHandshake(false); // Release hold
               triggerYogurtSplash();
               setShowOopsText(true);
               setTimeout(() => setShowOopsText(false), 10000);
-              shakeActive.current = false;
-              setIsHoldingHandshake(false);
-            }, 5000);
+            }
           }
         } else {
-          // If not shaking, reset timer
-          if (shakeActive.current && shakeStartTime.current && Date.now() - shakeStartTime.current > 600) {
-            shakeActive.current = false;
-            shakeStartTime.current = null;
-            if (shakeTimer.current) clearTimeout(shakeTimer.current);
-          }
+          // Not shaking
+          shaking = false;
+          shakeStart = 0;
         }
+
         lastX = current.x!;
         lastY = current.y!;
         lastZ = current.z!;
       }
     };
+
     // Request device motion permission on iOS
+    let permissionGranted = false;
     if (typeof DeviceMotionEvent !== 'undefined' && typeof (DeviceMotionEvent as any).requestPermission === 'function') {
       (DeviceMotionEvent as any).requestPermission().then((permission: string) => {
         if (permission === 'granted') {
+          permissionGranted = true;
           window.addEventListener('devicemotion', handleShake);
         }
       });
     } else {
       window.addEventListener('devicemotion', handleShake);
     }
+
     return () => {
       window.removeEventListener('devicemotion', handleShake);
-      if (shakeTimer.current) clearTimeout(shakeTimer.current);
-      shakeActive.current = false;
-      shakeStartTime.current = null;
     };
   }, [isMobile, isHoldingHandshake]);
 
@@ -575,11 +530,11 @@ const Contact: React.FC = () => {
                 <div className="text-center">
                   <div
                     className="mb-3"
-                    style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#aa00ff', touchAction: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
-                    onTouchStart={() => isMobile && setIsHoldingHandshake(true)}
-                    onTouchEnd={() => isMobile && setIsHoldingHandshake(false)}
-                    onTouchCancel={() => isMobile && setIsHoldingHandshake(false)}
-                    title={isMobile ? 'Hold and shake for 5 seconds!' : undefined}
+                    style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#aa00ff', touchAction: 'none' }}
+                    onTouchStart={() => setIsHoldingHandshake(true)}
+                    onTouchEnd={() => setIsHoldingHandshake(false)}
+                    onTouchCancel={() => setIsHoldingHandshake(false)}
+                    title={isMobile ? 'Touch and hold, then shake for 5 seconds!' : undefined}
                   >
                     <i className="fas fa-handshake"></i>
                   </div>
