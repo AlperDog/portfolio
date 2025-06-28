@@ -526,7 +526,7 @@ section {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 1000px;
   }
 
   section {
@@ -549,25 +549,25 @@ section {
 
 @media (min-width: 1400px) {
   .container {
-    max-width: 1320px;
+    max-width: 1100px;
   }
 }
 
 @media (min-width: 1600px) {
   .container {
-    max-width: 1520px;
+    max-width: 1200px;
   }
 }
 
 @media (min-width: 1920px) {
   .container {
-    max-width: 1720px;
+    max-width: 1300px;
   }
 }
 
 /* Ultra-wide screen support */
 @media (min-width: 2560px) {
   .container {
-    max-width: 2000px;
+    max-width: 1400px;
   }
 }
