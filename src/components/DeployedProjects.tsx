@@ -12,7 +12,8 @@ const DeployedProjects: React.FC = () => {
       image: "fas fa-video",
       status: "In Development",
       lastUpdated: "2024",
-      features: ["Real-time Sync", "WebRTC", "Live Chat", "Room Management"]
+      features: ["Real-time Sync", "WebRTC", "Live Chat", "Room Management"],
+      category: "Full-Stack"
     },
     {
       id: 2,
@@ -24,7 +25,8 @@ const DeployedProjects: React.FC = () => {
       image: "fas fa-hashtag",
       status: "In Development",
       lastUpdated: "2024",
-      features: ["Real-time Analysis", "Multi-platform", "AI Integration", "Data Visualization"]
+      features: ["Real-time Analysis", "Multi-platform", "AI Integration", "Data Visualization"],
+      category: "Full-Stack"
     },
     {
       id: 3,
@@ -36,7 +38,8 @@ const DeployedProjects: React.FC = () => {
       image: "fas fa-tasks",
       status: "Live",
       lastUpdated: "2024",
-      features: ["Drag & Drop", "Real-time Updates", "Kanban Board", "Priority Levels"]
+      features: ["Drag & Drop", "Real-time Updates", "Kanban Board", "Priority Levels"],
+      category: "Frontend"
     },
     {
       id: 4,
@@ -48,7 +51,8 @@ const DeployedProjects: React.FC = () => {
       image: "fas fa-cloud-sun",
       status: "Live",
       lastUpdated: "2024",
-      features: ["Location Services", "5-Day Forecast", "Interactive Maps", "Data Charts"]
+      features: ["Location Services", "5-Day Forecast", "Interactive Maps", "Data Charts"],
+      category: "Frontend"
     },
     {
       id: 5,
@@ -60,7 +64,8 @@ const DeployedProjects: React.FC = () => {
       image: "fas fa-stopwatch",
       status: "Live",
       lastUpdated: "2024",
-      features: ["Millisecond Precision", "Lap Timing", "Clean UI", "TypeScript"]
+      features: ["Millisecond Precision", "Lap Timing", "Clean UI", "TypeScript"],
+      category: "Frontend"
     },
     {
       id: 6,
@@ -72,7 +77,8 @@ const DeployedProjects: React.FC = () => {
       image: "fas fa-paw",
       status: "Live",
       lastUpdated: "2024",
-      features: ["Pet Care System", "Evolving Mechanics", "Mobile Responsive", "Interactive Design"]
+      features: ["Pet Care System", "Evolving Mechanics", "Mobile Responsive", "Interactive Design"],
+      category: "Game"
     }
   ];
 
@@ -86,9 +92,29 @@ const DeployedProjects: React.FC = () => {
     const config = statusConfig[status as keyof typeof statusConfig] || statusConfig['In Development'];
 
     return (
-      <span className={`badge bg-${config.color} me-2`}>
+      <span className={`badge bg-${config.color} me-2`} style={{ 
+        fontSize: 'clamp(0.6rem, 2vw, 0.75rem)',
+        padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
+      }}>
         <i className={`${config.icon} me-1`}></i>
         {status}
+      </span>
+    );
+  };
+
+  const getCategoryBadge = (category: string) => {
+    const categoryColors = {
+      'Full-Stack': 'primary',
+      'Frontend': 'info',
+      'Game': 'success'
+    };
+
+    return (
+      <span className={`badge bg-${categoryColors[category as keyof typeof categoryColors] || 'secondary'}`} style={{ 
+        fontSize: 'clamp(0.5rem, 1.5vw, 0.65rem)',
+        padding: 'clamp(0.2rem, 0.8vw, 0.3rem) clamp(0.4rem, 1.5vw, 0.6rem)'
+      }}>
+        {category}
       </span>
     );
   };
@@ -101,31 +127,84 @@ const DeployedProjects: React.FC = () => {
           A showcase of my deployed applications, each demonstrating different aspects of modern web development 
           from full-stack applications to interactive tools and games.
         </p>
+
+        {/* Project Statistics */}
+        <div className="row mb-5">
+          <div className="col-12">
+            <div className="card-custom">
+              <div className="row text-center">
+                <div className="col-md-3 col-6 mb-3">
+                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#aa00ff' }}>
+                    <i className="fas fa-rocket"></i>
+                  </div>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>6 Projects</h5>
+                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Total Applications</p>
+                </div>
+                <div className="col-md-3 col-6 mb-3">
+                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#28a745' }}>
+                    <i className="fas fa-check-circle"></i>
+                  </div>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>4 Live</h5>
+                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Deployed & Running</p>
+                </div>
+                <div className="col-md-3 col-6 mb-3">
+                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#ffc107' }}>
+                    <i className="fas fa-code"></i>
+                  </div>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>2 In Dev</h5>
+                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Under Development</p>
+                </div>
+                <div className="col-md-3 col-6 mb-3">
+                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#17a2b8' }}>
+                    <i className="fas fa-layer-group"></i>
+                  </div>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>3 Categories</h5>
+                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Full-Stack, Frontend, Game</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         
+        {/* Projects Grid */}
         <div className="row g-4">
           {deployedProjects.map((project) => (
-            <div key={project.id} className="col-lg-6 col-xl-4 col-xxl-3">
-              <div className="card-custom h-100">
+            <div key={project.id} className="col-lg-6 col-xl-4">
+              <div className="card-custom h-100" style={{ 
+                borderTop: `4px solid ${project.status === 'Live' ? '#28a745' : '#ffc107'}`,
+                position: 'relative'
+              }}>
+                {/* Category Badge */}
+                <div className="position-absolute top-0 end-0 m-3">
+                  {getCategoryBadge(project.category)}
+                </div>
+
+                {/* Project Header */}
                 <div className="text-center mb-4">
-                  <div style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#aa00ff' }}>
+                  <div style={{ fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', color: '#aa00ff' }}>
                     <i className={project.image}></i>
                   </div>
-                  <h3 className="h4 text-white mt-3" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>{project.title}</h3>
-                  <div className="mb-2">
+                  <h3 className="h4 text-white mt-3 mb-2" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)' }}>{project.title}</h3>
+                  <div className="mb-3">
                     {getStatusBadge(project.status)}
                     <small className="text-white-50" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Updated: {project.lastUpdated}</small>
                   </div>
                 </div>
                 
-                <p className="text-white-50 mb-3" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>{project.description}</p>
+                {/* Project Description */}
+                <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)', lineHeight: '1.6' }}>{project.description}</p>
                 
-                <div className="mb-3">
-                  <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Key Features:</h6>
+                {/* Key Features */}
+                <div className="mb-4">
+                  <h6 className="text-white mb-3" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
+                    <i className="fas fa-star me-2" style={{ color: '#aa00ff' }}></i>
+                    Key Features
+                  </h6>
                   <div className="row g-2">
                     {project.features.map((feature, index) => (
                       <div key={index} className="col-6">
-                        <small className="text-white-50" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
-                          <i className="fas fa-check me-1" style={{ color: '#aa00ff' }}></i>
+                        <small className="text-white-50 d-flex align-items-center" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
+                          <i className="fas fa-check me-2" style={{ color: '#aa00ff', fontSize: '0.7rem' }}></i>
                           {feature}
                         </small>
                       </div>
@@ -133,8 +212,12 @@ const DeployedProjects: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mb-3">
-                  <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Technologies:</h6>
+                {/* Technologies */}
+                <div className="mb-4">
+                  <h6 className="text-white mb-3" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
+                    <i className="fas fa-tools me-2" style={{ color: '#aa00ff' }}></i>
+                    Technologies
+                  </h6>
                   <div className="d-flex flex-wrap gap-1">
                     {project.technologies.map((tech, index) => (
                       <span key={index} className="badge bg-secondary" style={{ 
@@ -147,6 +230,7 @@ const DeployedProjects: React.FC = () => {
                   </div>
                 </div>
                 
+                {/* Action Buttons */}
                 <div className="d-flex gap-2 mt-auto" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem) !important' }}>
                   <a 
                     href={project.demoLink} 
@@ -184,15 +268,18 @@ const DeployedProjects: React.FC = () => {
         <div className="row mt-5">
           <div className="col-12 text-center">
             <div className="card-custom">
-              <h3 className="h4 text-white mb-3" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>Interested in My Work?</h3>
-              <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>
+              <div className="mb-4" style={{ fontSize: 'clamp(3rem, 8vw, 4rem)', color: '#aa00ff' }}>
+                <i className="fas fa-handshake"></i>
+              </div>
+              <h3 className="h4 text-white mb-3" style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)' }}>Interested in My Work?</h3>
+              <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>
                 I'm always open to discussing new opportunities and collaborations. 
-                Let's connect and explore how we can work together!
+                Let's connect and explore how we can work together to bring your ideas to life!
               </p>
               <div className="d-flex flex-wrap gap-3 justify-content-center" style={{ gap: 'clamp(0.75rem, 2vw, 1rem) !important' }}>
                 <button className="btn btn-custom" onClick={() => window.open('mailto:dogramacialper98@gmail.com', '_blank')} style={{ 
-                  fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
-                  padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1.2rem, 3vw, 1.5rem)'
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+                  padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1.5rem, 3vw, 2rem)'
                 }}>
                   <i className="fas fa-envelope me-2"></i>
                   Get in Touch
@@ -203,8 +290,8 @@ const DeployedProjects: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ 
-                    fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
-                    padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1.2rem, 3vw, 1.5rem)'
+                    fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+                    padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1.5rem, 3vw, 2rem)'
                   }}
                 >
                   <i className="fab fa-github me-2"></i>
