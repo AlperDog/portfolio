@@ -171,7 +171,8 @@ const Contact: React.FC = () => {
             onClick={handleConnectClick}
             style={{ 
               cursor: 'pointer',
-              position: 'relative'
+              position: 'relative',
+              fontSize: 'clamp(1.5rem, 5vw, 2.5rem)'
             }}
             title="Click me 31 times for a yogurt splash! 🥛💧"
           >
@@ -192,7 +193,7 @@ const Contact: React.FC = () => {
               ></span>
             )}
           </h2>
-          <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)' }}>
+          <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}>
             I'm actively seeking new opportunities and collaborations. Whether you have a project in mind 
             or just want to discuss potential opportunities, I'd love to hear from you!
           </p>
@@ -200,18 +201,28 @@ const Contact: React.FC = () => {
           <div className="row g-5">
             <div className="col-lg-6">
               <div className="card-custom h-100" style={{ backgroundColor: '#1a1a1a', border: '1px solid rgba(170, 0, 255, 0.2)' }}>
-                <h3 className="h4 text-white mb-4">Send Me a Message</h3>
+                <h3 className="h4 text-white mb-4" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>Send Me a Message</h3>
                 
                 {/* Status Messages */}
                 {submitStatus === 'success' && (
-                  <div className="alert alert-success mb-4" style={{ backgroundColor: 'rgba(40, 167, 69, 0.2)', border: '1px solid #28a745', color: '#fff' }}>
+                  <div className="alert alert-success mb-4" style={{ 
+                    backgroundColor: 'rgba(40, 167, 69, 0.2)', 
+                    border: '1px solid #28a745', 
+                    color: '#fff',
+                    fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)'
+                  }}>
                     <i className="fas fa-check-circle me-2"></i>
                     Thank you! Your message has been sent successfully. I'll get back to you soon.
                   </div>
                 )}
                 
                 {submitStatus === 'error' && (
-                  <div className="alert alert-danger mb-4" style={{ backgroundColor: 'rgba(220, 53, 69, 0.2)', border: '1px solid #dc3545', color: '#fff' }}>
+                  <div className="alert alert-danger mb-4" style={{ 
+                    backgroundColor: 'rgba(220, 53, 69, 0.2)', 
+                    border: '1px solid #dc3545', 
+                    color: '#fff',
+                    fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)'
+                  }}>
                     <i className="fas fa-exclamation-circle me-2"></i>
                     Something went wrong. Please try again or contact me directly via email.
                   </div>
@@ -219,7 +230,7 @@ const Contact: React.FC = () => {
 
                 <form onSubmit={handleSubmit} method="POST" action="https://formspree.io/f/mdkzwbpy">
                   <div className="mb-3">
-                    <label htmlFor="name" className="form-label text-white fw-bold">Full Name *</label>
+                    <label htmlFor="name" className="form-label text-white fw-bold" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Full Name *</label>
                     <input
                       type="text"
                       className="form-control"
@@ -234,14 +245,15 @@ const Contact: React.FC = () => {
                         border: '1px solid rgba(170, 0, 255, 0.3)',
                         color: '#fff',
                         borderRadius: '8px',
-                        padding: '12px 16px'
+                        padding: 'clamp(10px, 2.5vw, 12px) clamp(12px, 3vw, 16px)',
+                        fontSize: 'clamp(0.875rem, 2.5vw, 1rem)'
                       }}
                       placeholder="Your full name"
                     />
                   </div>
                   
                   <div className="mb-3">
-                    <label htmlFor="email" className="form-label text-white fw-bold">Email Address *</label>
+                    <label htmlFor="email" className="form-label text-white fw-bold" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Email Address *</label>
                     <input
                       type="email"
                       className="form-control"
@@ -256,14 +268,15 @@ const Contact: React.FC = () => {
                         border: '1px solid rgba(170, 0, 255, 0.3)',
                         color: '#fff',
                         borderRadius: '8px',
-                        padding: '12px 16px'
+                        padding: 'clamp(10px, 2.5vw, 12px) clamp(12px, 3vw, 16px)',
+                        fontSize: 'clamp(0.875rem, 2.5vw, 1rem)'
                       }}
                       placeholder="your.email@company.com"
                     />
                   </div>
 
                   <div className="mb-3">
-                    <label htmlFor="company" className="form-label text-white fw-bold">Company/Organization</label>
+                    <label htmlFor="company" className="form-label text-white fw-bold" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Company/Organization</label>
                     <input
                       type="text"
                       className="form-control"
@@ -277,14 +290,15 @@ const Contact: React.FC = () => {
                         border: '1px solid rgba(170, 0, 255, 0.3)',
                         color: '#fff',
                         borderRadius: '8px',
-                        padding: '12px 16px'
+                        padding: 'clamp(10px, 2.5vw, 12px) clamp(12px, 3vw, 16px)',
+                        fontSize: 'clamp(0.875rem, 2.5vw, 1rem)'
                       }}
                       placeholder="Your company (optional)"
                     />
                   </div>
                   
                   <div className="mb-4">
-                    <label htmlFor="message" className="form-label text-white fw-bold">Message *</label>
+                    <label htmlFor="message" className="form-label text-white fw-bold" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Message *</label>
                     <textarea
                       className="form-control"
                       id="message"
@@ -299,8 +313,9 @@ const Contact: React.FC = () => {
                         border: '1px solid rgba(170, 0, 255, 0.3)',
                         color: '#fff',
                         borderRadius: '8px',
-                        padding: '12px 16px',
-                        resize: 'none'
+                        padding: 'clamp(10px, 2.5vw, 12px) clamp(12px, 3vw, 16px)',
+                        resize: 'none',
+                        fontSize: 'clamp(0.875rem, 2.5vw, 1rem)'
                       }}
                       placeholder="Tell me about your project or opportunity..."
                     ></textarea>
@@ -317,9 +332,10 @@ const Contact: React.FC = () => {
                         borderRadius: '8px',
                         color: '#fff',
                         fontWeight: 'bold',
-                        fontSize: '1.1rem',
+                        fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
                         transition: 'all 0.3s ease',
-                        minWidth: '200px'
+                        minWidth: 'clamp(180px, 50vw, 200px)',
+                        padding: 'clamp(0.75rem, 2vw, 1rem) clamp(2rem, 5vw, 3rem)'
                       }}
                       onMouseEnter={(e) => {
                         if (!isSubmitting) {
@@ -355,8 +371,8 @@ const Contact: React.FC = () => {
             
             <div className="col-lg-6">
               <div className="card-custom h-100" style={{ backgroundColor: '#1a1a1a', border: '1px solid rgba(170, 0, 255, 0.2)' }}>
-                <h3 className="h4 text-white mb-4">Get In Touch</h3>
-                <p className="text-white-50 mb-4">
+                <h3 className="h4 text-white mb-4" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>Get In Touch</h3>
+                <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>
                   I'm actively looking for new opportunities in full-stack development, particularly roles involving 
                   React, TypeScript, and modern web technologies. I'm open to remote work and relocation opportunities.
                 </p>
@@ -374,7 +390,8 @@ const Contact: React.FC = () => {
                           border: '1px solid rgba(170, 0, 255, 0.2)',
                           textDecoration: 'none',
                           transition: 'all 0.3s ease',
-                          borderRadius: '8px'
+                          borderRadius: '8px',
+                          padding: 'clamp(0.75rem, 2vw, 1rem)'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.transform = 'translateY(-5px)';
@@ -390,15 +407,15 @@ const Contact: React.FC = () => {
                         <div 
                           className="me-3"
                           style={{ 
-                            fontSize: '1.5rem', 
+                            fontSize: 'clamp(1.25rem, 4vw, 1.5rem)', 
                             color: social.color 
                           }}
                         >
                           <i className={social.icon}></i>
                         </div>
                         <div>
-                          <div className="text-white fw-bold">{social.name}</div>
-                          <small className="text-white-50">{social.description}</small>
+                          <div className="text-white fw-bold" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>{social.name}</div>
+                          <small className="text-white-50" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>{social.description}</small>
                         </div>
                       </a>
                     </div>
@@ -406,11 +423,11 @@ const Contact: React.FC = () => {
                 </div>
                 
                 <div className="text-center">
-                  <div className="mb-3" style={{ fontSize: '3rem', color: '#aa00ff' }}>
+                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-handshake"></i>
                   </div>
-                  <h5 className="text-white">Ready to Collaborate?</h5>
-                  <p className="text-white-50">
+                  <h5 className="text-white" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>Ready to Collaborate?</h5>
+                  <p className="text-white-50" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>
                     I'm excited to discuss how I can contribute to your team and help bring your projects to life. 
                     Let's schedule a call to explore potential opportunities!
                   </p>
@@ -418,6 +435,10 @@ const Contact: React.FC = () => {
                     <button 
                       className="btn btn-outline-light me-2"
                       onClick={() => window.open('mailto:dogramacialper98@gmail.com?subject=Portfolio Contact - Job Opportunity', '_blank')}
+                      style={{ 
+                        fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
+                        padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
+                      }}
                     >
                       <i className="fas fa-envelope me-2"></i>
                       Email Me
@@ -425,6 +446,10 @@ const Contact: React.FC = () => {
                     <button 
                       className="btn btn-outline-success"
                       onClick={() => window.open('https://wa.me/905069510808?text=Hi Alper, I saw your portfolio and would like to discuss a potential opportunity.', '_blank')}
+                      style={{ 
+                        fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
+                        padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
+                      }}
                     >
                       <i className="fab fa-whatsapp me-2"></i>
                       WhatsApp
@@ -447,13 +472,14 @@ const Contact: React.FC = () => {
           }}
         >
           <div className="text-center text-white">
-            <div className="display-1 fw-bold mb-0" style={{ 
-              fontSize: '8rem',
+            <h1 style={{ 
+              fontSize: 'clamp(3rem, 15vw, 8rem)', 
+              fontWeight: 'bold',
               textShadow: '0 0 30px rgba(255,255,255,0.8)',
-              animation: 'pulse 0.5s ease-in-out infinite'
+              animation: 'pulse 2s ease-in-out infinite'
             }}>
               OOPS!
-            </div>
+            </h1>
           </div>
         </div>
       )}

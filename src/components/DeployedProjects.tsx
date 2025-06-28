@@ -97,7 +97,7 @@ const DeployedProjects: React.FC = () => {
     <section id="deployed-projects" className="py-5">
       <div className="container">
         <h2 className="section-title">Live Applications</h2>
-        <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)' }}>
+        <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
           A showcase of my deployed applications, each demonstrating different aspects of modern web development 
           from full-stack applications to interactive tools and games.
         </p>
@@ -107,24 +107,24 @@ const DeployedProjects: React.FC = () => {
             <div key={project.id} className="col-lg-6 col-xl-4">
               <div className="card-custom h-100">
                 <div className="text-center mb-4">
-                  <div style={{ fontSize: 'clamp(2.5rem, 6vw, 3rem)', color: '#aa00ff' }}>
+                  <div style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#aa00ff' }}>
                     <i className={project.image}></i>
                   </div>
-                  <h3 className="h4 text-white mt-3" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)' }}>{project.title}</h3>
+                  <h3 className="h4 text-white mt-3" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>{project.title}</h3>
                   <div className="mb-2">
                     {getStatusBadge(project.status)}
-                    <small className="text-white-50" style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>Updated: {project.lastUpdated}</small>
+                    <small className="text-white-50" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Updated: {project.lastUpdated}</small>
                   </div>
                 </div>
                 
-                <p className="text-white-50 mb-3" style={{ fontSize: 'clamp(0.9rem, 2.2vw, 1rem)' }}>{project.description}</p>
+                <p className="text-white-50 mb-3" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>{project.description}</p>
                 
                 <div className="mb-3">
-                  <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.95rem, 2.2vw, 1.05rem)' }}>Key Features:</h6>
+                  <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Key Features:</h6>
                   <div className="row g-2">
                     {project.features.map((feature, index) => (
                       <div key={index} className="col-6">
-                        <small className="text-white-50" style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>
+                        <small className="text-white-50" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
                           <i className="fas fa-check me-1" style={{ color: '#aa00ff' }}></i>
                           {feature}
                         </small>
@@ -134,22 +134,29 @@ const DeployedProjects: React.FC = () => {
                 </div>
 
                 <div className="mb-3">
-                  <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.95rem, 2.2vw, 1.05rem)' }}>Technologies:</h6>
+                  <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Technologies:</h6>
                   <div className="d-flex flex-wrap gap-1">
                     {project.technologies.map((tech, index) => (
-                      <span key={index} className="badge bg-secondary" style={{ fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>
+                      <span key={index} className="badge bg-secondary" style={{ 
+                        fontSize: 'clamp(0.6rem, 2vw, 0.75rem)',
+                        padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
+                      }}>
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
                 
-                <div className="d-flex gap-2 mt-auto">
+                <div className="d-flex gap-2 mt-auto" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem) !important' }}>
                   <a 
                     href={project.demoLink} 
                     className="btn btn-custom btn-sm flex-fill"
                     target="_blank"
                     rel="noopener noreferrer"
+                    style={{ 
+                      fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
+                      padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
+                    }}
                   >
                     <i className="fas fa-external-link-alt me-2"></i>
                     {project.status === 'Live' ? 'Live Demo' : 'View Project'}
@@ -159,6 +166,10 @@ const DeployedProjects: React.FC = () => {
                     className="btn btn-outline-light btn-sm flex-fill"
                     target="_blank"
                     rel="noopener noreferrer"
+                    style={{ 
+                      fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
+                      padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
+                    }}
                   >
                     <i className="fab fa-github me-2"></i>
                     Source Code
@@ -173,13 +184,16 @@ const DeployedProjects: React.FC = () => {
         <div className="row mt-5">
           <div className="col-12 text-center">
             <div className="card-custom">
-              <h3 className="h4 text-white mb-3" style={{ fontSize: 'clamp(1.2rem, 3vw, 1.5rem)' }}>Interested in My Work?</h3>
-              <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)' }}>
+              <h3 className="h4 text-white mb-3" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>Interested in My Work?</h3>
+              <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>
                 I'm always open to discussing new opportunities and collaborations. 
                 Let's connect and explore how we can work together!
               </p>
-              <div className="d-flex flex-wrap gap-3 justify-content-center">
-                <button className="btn btn-custom" onClick={() => window.open('mailto:dogramacialper98@gmail.com', '_blank')}>
+              <div className="d-flex flex-wrap gap-3 justify-content-center" style={{ gap: 'clamp(0.75rem, 2vw, 1rem) !important' }}>
+                <button className="btn btn-custom" onClick={() => window.open('mailto:dogramacialper98@gmail.com', '_blank')} style={{ 
+                  fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
+                  padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1.2rem, 3vw, 1.5rem)'
+                }}>
                   <i className="fas fa-envelope me-2"></i>
                   Get in Touch
                 </button>
@@ -188,6 +202,10 @@ const DeployedProjects: React.FC = () => {
                   className="btn btn-outline-light"
                   target="_blank"
                   rel="noopener noreferrer"
+                  style={{ 
+                    fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
+                    padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1.2rem, 3vw, 1.5rem)'
+                  }}
                 >
                   <i className="fab fa-github me-2"></i>
                   View All Projects
