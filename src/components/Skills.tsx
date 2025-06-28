@@ -133,7 +133,7 @@ const Skills: React.FC = () => {
     <section id="skills" className="py-5">
       <div className="container">
         <h2 className="section-title">Technical Skills</h2>
-        <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
+        <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)' }}>
           A comprehensive skill set focused on modern web development technologies and best practices.
         </p>
         <div className="row g-3 g-md-4">
@@ -150,7 +150,7 @@ const Skills: React.FC = () => {
                 <div 
                   className="mb-3"
                   style={{ 
-                    fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', 
+                    fontSize: 'clamp(2rem, 4vw, 2.5rem)', 
                     color: skill.color,
                     animation: isVisible ? 'pulse 2s ease-in-out infinite' : 'none' 
                   }}
@@ -158,20 +158,20 @@ const Skills: React.FC = () => {
                   <i className={skill.icon}></i>
                 </div>
                 <div className="d-flex justify-content-between align-items-center mb-2">
-                  <h5 className="text-white mb-0" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>{skill.name}</h5>
+                  <h5 className="text-white mb-0" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}>{skill.name}</h5>
                   <span 
                     className="badge"
                     style={{
                       backgroundColor: getLevelColor(skill.level),
                       color: 'white',
-                      fontSize: 'clamp(0.6rem, 1.5vw, 0.7rem)',
+                      fontSize: 'clamp(0.7rem, 1.5vw, 0.8rem)',
                       padding: '0.25rem 0.5rem'
                     }}
                   >
                     {skill.level}
                   </span>
                 </div>
-                <p className="text-white-50 small mb-0" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>{skill.description}</p>
+                <p className="text-white-50 small mb-0" style={{ fontSize: 'clamp(0.85rem, 2vw, 0.95rem)' }}>{skill.description}</p>
               </div>
             </div>
           ))}
@@ -181,35 +181,35 @@ const Skills: React.FC = () => {
         <div className="row mt-5">
           <div className="col-12">
             <div className="card-custom">
-              <h3 className="h4 text-white mb-4 text-center" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>Professional Strengths</h3>
+              <h3 className="h4 text-white mb-4 text-center" style={{ fontSize: 'clamp(1.3rem, 3vw, 1.6rem)' }}>Professional Strengths</h3>
               <div className="row g-3">
                 <div className="col-6 col-md-3 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
+                  <div className="mb-3" style={{ fontSize: 'clamp(2.5rem, 5vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-lightbulb"></i>
                   </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Problem Solving</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Analytical thinking and creative solutions</p>
+                  <h5 className="text-white" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}>Problem Solving</h5>
+                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>Analytical thinking and creative solutions</p>
                 </div>
                 <div className="col-6 col-md-3 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
+                  <div className="mb-3" style={{ fontSize: 'clamp(2.5rem, 5vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-users"></i>
                   </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Team Collaboration</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Effective communication and teamwork</p>
+                  <h5 className="text-white" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}>Team Collaboration</h5>
+                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>Effective communication and teamwork</p>
                 </div>
                 <div className="col-6 col-md-3 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
+                  <div className="mb-3" style={{ fontSize: 'clamp(2.5rem, 5vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-rocket"></i>
                   </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Fast Learning</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Quick adaptation to new technologies</p>
+                  <h5 className="text-white" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}>Fast Learning</h5>
+                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>Quick adaptation to new technologies</p>
                 </div>
                 <div className="col-6 col-md-3 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
+                  <div className="mb-3" style={{ fontSize: 'clamp(2.5rem, 5vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-code"></i>
                   </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Clean Code</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Maintainable and scalable solutions</p>
+                  <h5 className="text-white" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}>Clean Code</h5>
+                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>Maintainable and scalable solutions</p>
                 </div>
               </div>
             </div>

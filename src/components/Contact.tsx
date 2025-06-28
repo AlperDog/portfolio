@@ -192,7 +192,7 @@ const Contact: React.FC = () => {
               ></span>
             )}
           </h2>
-          <p className="text-center text-white-50 mb-5">
+          <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)' }}>
             I'm actively seeking new opportunities and collaborations. Whether you have a project in mind 
             or just want to discuss potential opportunities, I'd love to hear from you!
           </p>

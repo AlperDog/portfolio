@@ -93,7 +93,7 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
           <div className="col-lg-6 text-center">
-            <div className="float" style={{ fontSize: '8rem', color: '#aa00ff' }}>
+            <div className="float" style={{ fontSize: 'clamp(4rem, 15vw, 8rem)', color: '#aa00ff' }}>
               <i className="fas fa-code"></i>
             </div>
           </div>

@@ -97,7 +97,7 @@ const DeployedProjects: React.FC = () => {
     <section id="deployed-projects" className="py-5">
       <div className="container">
         <h2 className="section-title">Live Applications</h2>
-        <p className="text-center text-white-50 mb-5">
+        <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)' }}>
           A showcase of my deployed applications, each demonstrating different aspects of modern web development 
           from full-stack applications to interactive tools and games.
         </p>
@@ -107,24 +107,24 @@ const DeployedProjects: React.FC = () => {
             <div key={project.id} className="col-lg-6 col-xl-4">
               <div className="card-custom h-100">
                 <div className="text-center mb-4">
-                  <div style={{ fontSize: '3rem', color: '#aa00ff' }}>
+                  <div style={{ fontSize: 'clamp(2.5rem, 6vw, 3rem)', color: '#aa00ff' }}>
                     <i className={project.image}></i>
                   </div>
-                  <h3 className="h4 text-white mt-3">{project.title}</h3>
+                  <h3 className="h4 text-white mt-3" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)' }}>{project.title}</h3>
                   <div className="mb-2">
                     {getStatusBadge(project.status)}
-                    <small className="text-white-50">Updated: {project.lastUpdated}</small>
+                    <small className="text-white-50" style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>Updated: {project.lastUpdated}</small>
                   </div>
                 </div>
                 
-                <p className="text-white-50 mb-3">{project.description}</p>
+                <p className="text-white-50 mb-3" style={{ fontSize: 'clamp(0.9rem, 2.2vw, 1rem)' }}>{project.description}</p>
                 
                 <div className="mb-3">
-                  <h6 className="text-white mb-2">Key Features:</h6>
+                  <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.95rem, 2.2vw, 1.05rem)' }}>Key Features:</h6>
                   <div className="row g-2">
                     {project.features.map((feature, index) => (
                       <div key={index} className="col-6">
-                        <small className="text-white-50">
+                        <small className="text-white-50" style={{ fontSize: 'clamp(0.8rem, 2vw, 0.9rem)' }}>
                           <i className="fas fa-check me-1" style={{ color: '#aa00ff' }}></i>
                           {feature}
                         </small>
@@ -134,10 +134,10 @@ const DeployedProjects: React.FC = () => {
                 </div>
 
                 <div className="mb-3">
-                  <h6 className="text-white mb-2">Technologies:</h6>
+                  <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.95rem, 2.2vw, 1.05rem)' }}>Technologies:</h6>
                   <div className="d-flex flex-wrap gap-1">
                     {project.technologies.map((tech, index) => (
-                      <span key={index} className="badge bg-secondary">
+                      <span key={index} className="badge bg-secondary" style={{ fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>
                         {tech}
                       </span>
                     ))}
@@ -173,8 +173,8 @@ const DeployedProjects: React.FC = () => {
         <div className="row mt-5">
           <div className="col-12 text-center">
             <div className="card-custom">
-              <h3 className="h4 text-white mb-3">Interested in My Work?</h3>
-              <p className="text-white-50 mb-4">
+              <h3 className="h4 text-white mb-3" style={{ fontSize: 'clamp(1.2rem, 3vw, 1.5rem)' }}>Interested in My Work?</h3>
+              <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.1rem)' }}>
                 I'm always open to discussing new opportunities and collaborations. 
                 Let's connect and explore how we can work together!
               </p>
