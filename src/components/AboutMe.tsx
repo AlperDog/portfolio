@@ -6,7 +6,7 @@ const AboutMe: React.FC = () => {
       <div className="container">
         <h2 className="section-title">About Me</h2>
         <div className="row align-items-center">
-          <div className="col-lg-6 mb-4 mb-lg-0">
+          <div className="col-lg-6 col-xl-5 mb-4 mb-lg-0">
             <div className="card-custom h-100">
               <div className="text-center mb-4">
                 <div className="pulse" style={{ fontSize: 'clamp(2.5rem, 10vw, 4rem)', color: '#aa00ff' }}>
@@ -31,9 +31,9 @@ const AboutMe: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6 col-xl-7">
             <div className="row g-3">
-              <div className="col-6">
+              <div className="col-6 col-lg-3 col-xl-3">
                 <div className="card-custom text-center h-100">
                   <div className="mb-3" style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', color: '#aa00ff' }}>
                     <i className="fas fa-graduation-cap"></i>
@@ -43,7 +43,7 @@ const AboutMe: React.FC = () => {
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>METU</p>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-6 col-lg-3 col-xl-3">
                 <div className="card-custom text-center h-100">
                   <div className="mb-3" style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', color: '#aa00ff' }}>
                     <i className="fas fa-code"></i>
@@ -53,7 +53,7 @@ const AboutMe: React.FC = () => {
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>React & TypeScript</p>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-6 col-lg-3 col-xl-3">
                 <div className="card-custom text-center h-100">
                   <div className="mb-3" style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', color: '#aa00ff' }}>
                     <i className="fas fa-project-diagram"></i>
@@ -63,7 +63,7 @@ const AboutMe: React.FC = () => {
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>100% Success Rate</p>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-6 col-lg-3 col-xl-3">
                 <div className="card-custom text-center h-100">
                   <div className="mb-3" style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', color: '#aa00ff' }}>
                     <i className="fas fa-rocket"></i>

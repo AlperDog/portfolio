@@ -44,11 +44,12 @@ section {
   line-height: 1.2;
 }
 
-/* Container adjustments for mobile */
+/* Modern Container System */
 .container {
-  padding-left: 15px;
-  padding-right: 15px;
-  max-width: 100%;
+  width: 100%;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+  margin: 0 auto;
 }
 
 /* Easter Egg Styles */
@@ -504,11 +505,28 @@ section {
   background: linear-gradient(45deg, #ff00aa, #aa00ff);
 }
 
-/* Large Screen Optimizations */
+/* Modern Responsive Container System */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
-    margin: 0 auto;
   }
 
   section {
@@ -524,13 +542,32 @@ section {
   }
 
   .card-custom {
-    max-width: 400px;
-    margin: 0 auto 1.5rem;
+    max-width: none;
+    margin: 0 0 1.5rem 0;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
   }
 }
 
 @media (min-width: 1600px) {
   .container {
-    max-width: 1400px;
+    max-width: 1520px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1720px;
+  }
+}
+
+/* Ultra-wide screen support */
+@media (min-width: 2560px) {
+  .container {
+    max-width: 2000px;
   }
 }

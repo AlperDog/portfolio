@@ -138,7 +138,7 @@ const Skills: React.FC = () => {
         </p>
         <div className="row g-3 g-md-4">
           {skills.map((skill, index) => (
-            <div key={skill.name} className="col-12 col-sm-6 col-lg-4">
+            <div key={skill.name} className="col-12 col-sm-6 col-lg-4 col-xl-3">
               <div className="card-custom text-center h-100 p-3" style={{ 
                 borderTop: `4px solid ${skill.color}`, 
                 boxShadow: isVisible ? '0 4px 24px rgba(0,0,0,0.15)' : 'none', 
@@ -183,28 +183,28 @@ const Skills: React.FC = () => {
             <div className="card-custom">
               <h3 className="h4 text-white mb-4 text-center" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>Professional Strengths</h3>
               <div className="row g-3">
-                <div className="col-6 col-md-3 text-center">
+                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
                   <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-lightbulb"></i>
                   </div>
                   <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Problem Solving</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Analytical thinking and creative solutions</p>
                 </div>
-                <div className="col-6 col-md-3 text-center">
+                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
                   <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-users"></i>
                   </div>
                   <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Team Collaboration</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Effective communication and teamwork</p>
                 </div>
-                <div className="col-6 col-md-3 text-center">
+                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
                   <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-rocket"></i>
                   </div>
                   <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Fast Learning</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Quick adaptation to new technologies</p>
                 </div>
-                <div className="col-6 col-md-3 text-center">
+                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
                   <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-code"></i>
                   </div>

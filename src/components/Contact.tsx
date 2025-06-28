@@ -199,7 +199,7 @@ const Contact: React.FC = () => {
           </p>
           
           <div className="row g-5">
-            <div className="col-lg-6">
+            <div className="col-lg-6 col-xl-5">
               <div className="card-custom h-100" style={{ backgroundColor: '#1a1a1a', border: '1px solid rgba(170, 0, 255, 0.2)' }}>
                 <h3 className="h4 text-white mb-4" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>Send Me a Message</h3>
                 
@@ -369,7 +369,7 @@ const Contact: React.FC = () => {
               </div>
             </div>
             
-            <div className="col-lg-6">
+            <div className="col-lg-6 col-xl-7">
               <div className="card-custom h-100" style={{ backgroundColor: '#1a1a1a', border: '1px solid rgba(170, 0, 255, 0.2)' }}>
                 <h3 className="h4 text-white mb-4" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>Get In Touch</h3>
                 <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>
@@ -379,7 +379,7 @@ const Contact: React.FC = () => {
                 
                 <div className="row g-3 mb-4">
                   {socialLinks.map((social) => (
-                    <div key={social.name} className="col-6">
+                    <div key={social.name} className="col-6 col-lg-6 col-xl-6">
                       <a
                         href={social.url}
                         target="_blank"

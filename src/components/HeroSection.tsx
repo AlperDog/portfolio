@@ -39,8 +39,8 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="container position-relative" style={{ zIndex: 2 }}>
-        <div className="row align-items-center">
-          <div className="col-lg-6 fade-in">
+        <div className="row align-items-center justify-content-center">
+          <div className="col-lg-5 col-xl-4 fade-in">
             <h1 className="display-3 fw-bold text-white mb-4" style={{ 
               fontSize: 'clamp(1.75rem, 8vw, 3.5rem)',
               lineHeight: '1.1'
@@ -113,7 +113,7 @@ const HeroSection: React.FC = () => {
               </a>
             </div>
           </div>
-          <div className="col-lg-6 text-center">
+          <div className="col-lg-5 col-xl-4 text-center">
             <div className="float" style={{ 
               fontSize: 'clamp(4rem, 15vw, 8rem)', 
               color: '#aa00ff' 

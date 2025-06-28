@@ -104,7 +104,7 @@ const DeployedProjects: React.FC = () => {
         
         <div className="row g-4">
           {deployedProjects.map((project) => (
-            <div key={project.id} className="col-lg-6 col-xl-4">
+            <div key={project.id} className="col-lg-6 col-xl-4 col-xxl-3">
               <div className="card-custom h-100">
                 <div className="text-center mb-4">
                   <div style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#aa00ff' }}>
