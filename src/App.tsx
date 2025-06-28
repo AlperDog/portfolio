@@ -4,16 +4,14 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import AboutMe from './components/AboutMe';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
 import DeployedProjects from './components/DeployedProjects';
-import MiniGames from './components/MiniGames';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 
 function App() {
-  const [clickCount, setClickCount] = useState(0);
   const [showToast, setShowToast] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
 
   useEffect(() => {
     // Smooth scrolling for anchor links
@@ -101,9 +99,7 @@ function App() {
         <HeroSection />
         <AboutMe />
         <Skills />
-        <Projects />
         <DeployedProjects />
-        <MiniGames />
         <Contact />
       </main>
       <Footer />

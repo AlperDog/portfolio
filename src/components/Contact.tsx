@@ -4,6 +4,7 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    company: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,7 +38,7 @@ const Contact: React.FC = () => {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', company: '', message: '' });
       } else {
         setSubmitStatus('error');
       }
@@ -49,18 +50,19 @@ const Contact: React.FC = () => {
   };
 
   const socialLinks = [
-    { name: 'GitHub', icon: 'fab fa-github', url: 'https://github.com/AlperDog', color: '#333' },
-    { name: 'LinkedIn', icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/dogramacialper/', color: '#0077b5' },
-    { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: 'https://wa.me/905069510808', color: '#25D366' },
-    { name: 'Email', icon: 'fas fa-envelope', url: 'mailto:dogramacialper98@gmail.com', color: '#aa00ff' }
+    { name: 'GitHub', icon: 'fab fa-github', url: 'https://github.com/AlperDog', color: '#333', description: 'View my projects and code' },
+    { name: 'LinkedIn', icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/dogramacialper/', color: '#0077b5', description: 'Professional profile' },
+    { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: 'https://wa.me/905069510808', color: '#25D366', description: 'Quick chat' },
+    { name: 'Email', icon: 'fas fa-envelope', url: 'mailto:dogramacialper98@gmail.com', color: '#aa00ff', description: 'Direct email' }
   ];
 
   return (
     <section id="contact" className="py-5" style={{ backgroundColor: '#121212' }}>
       <div className="container">
-        <h2 className="section-title text-white">Get In Touch</h2>
+        <h2 className="section-title text-white">Let's Connect</h2>
         <p className="text-center text-white-50 mb-5">
-          Ready to start a project or just want to chat? I'd love to hear from you!
+          I'm actively seeking new opportunities and collaborations. Whether you have a project in mind 
+          or just want to discuss potential opportunities, I'd love to hear from you!
         </p>
         
         <div className="row g-5">
@@ -72,20 +74,20 @@ const Contact: React.FC = () => {
               {submitStatus === 'success' && (
                 <div className="alert alert-success mb-4" style={{ backgroundColor: 'rgba(40, 167, 69, 0.2)', border: '1px solid #28a745', color: '#fff' }}>
                   <i className="fas fa-check-circle me-2"></i>
-                  Thanks! Your message has been sent.
+                  Thank you! Your message has been sent successfully. I'll get back to you soon.
                 </div>
               )}
               
               {submitStatus === 'error' && (
                 <div className="alert alert-danger mb-4" style={{ backgroundColor: 'rgba(220, 53, 69, 0.2)', border: '1px solid #dc3545', color: '#fff' }}>
                   <i className="fas fa-exclamation-circle me-2"></i>
-                  Oops! Something went wrong. Please try again.
+                  Something went wrong. Please try again or contact me directly via email.
                 </div>
               )}
 
               <form onSubmit={handleSubmit} method="POST" action="https://formspree.io/f/mdkzwbpy">
                 <div className="mb-3">
-                  <label htmlFor="name" className="form-label text-white fw-bold">Full Name</label>
+                  <label htmlFor="name" className="form-label text-white fw-bold">Full Name *</label>
                   <input
                     type="text"
                     className="form-control"
@@ -102,12 +104,12 @@ const Contact: React.FC = () => {
                       borderRadius: '8px',
                       padding: '12px 16px'
                     }}
-                    placeholder="Enter your full name"
+                    placeholder="Your full name"
                   />
                 </div>
                 
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label text-white fw-bold">Email Address</label>
+                  <label htmlFor="email" className="form-label text-white fw-bold">Email Address *</label>
                   <input
                     type="email"
                     className="form-control"
@@ -124,12 +126,33 @@ const Contact: React.FC = () => {
                       borderRadius: '8px',
                       padding: '12px 16px'
                     }}
-                    placeholder="Enter your email address"
+                    placeholder="your.email@company.com"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="company" className="form-label text-white fw-bold">Company/Organization</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(170, 0, 255, 0.3)',
+                      color: '#fff',
+                      borderRadius: '8px',
+                      padding: '12px 16px'
+                    }}
+                    placeholder="Your company (optional)"
                   />
                 </div>
                 
                 <div className="mb-4">
-                  <label htmlFor="message" className="form-label text-white fw-bold">Message</label>
+                  <label htmlFor="message" className="form-label text-white fw-bold">Message *</label>
                   <textarea
                     className="form-control"
                     id="message"
@@ -147,7 +170,7 @@ const Contact: React.FC = () => {
                       padding: '12px 16px',
                       resize: 'none'
                     }}
-                    placeholder="Enter your message here..."
+                    placeholder="Tell me about your project or opportunity..."
                   ></textarea>
                 </div>
                 
@@ -200,9 +223,10 @@ const Contact: React.FC = () => {
           
           <div className="col-lg-6">
             <div className="card-custom h-100" style={{ backgroundColor: '#1a1a1a', border: '1px solid rgba(170, 0, 255, 0.2)' }}>
-              <h3 className="h4 text-white mb-4">Connect With Me</h3>
+              <h3 className="h4 text-white mb-4">Get In Touch</h3>
               <p className="text-white-50 mb-4">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                I'm actively looking for new opportunities in full-stack development, particularly roles involving 
+                React, TypeScript, and modern web technologies. I'm open to remote work and relocation opportunities.
               </p>
               
               <div className="row g-3 mb-4">
@@ -240,7 +264,10 @@ const Contact: React.FC = () => {
                       >
                         <i className={social.icon}></i>
                       </div>
-                      <span className="text-white">{social.name}</span>
+                      <div>
+                        <div className="text-white fw-bold">{social.name}</div>
+                        <small className="text-white-50">{social.description}</small>
+                      </div>
                     </a>
                   </div>
                 ))}
@@ -248,12 +275,29 @@ const Contact: React.FC = () => {
               
               <div className="text-center">
                 <div className="mb-3" style={{ fontSize: '3rem', color: '#aa00ff' }}>
-                  <i className="fas fa-coffee"></i>
+                  <i className="fas fa-handshake"></i>
                 </div>
-                <h5 className="text-white">Let's grab a coffee!</h5>
+                <h5 className="text-white">Ready to Collaborate?</h5>
                 <p className="text-white-50">
-                  Whether it's a virtual coffee or in person, I'm always excited to meet new people and discuss interesting projects.
+                  I'm excited to discuss how I can contribute to your team and help bring your projects to life. 
+                  Let's schedule a call to explore potential opportunities!
                 </p>
+                <div className="mt-3">
+                  <button 
+                    className="btn btn-outline-light me-2"
+                    onClick={() => window.open('mailto:dogramacialper98@gmail.com?subject=Portfolio Contact - Job Opportunity', '_blank')}
+                  >
+                    <i className="fas fa-envelope me-2"></i>
+                    Email Me
+                  </button>
+                  <button 
+                    className="btn btn-outline-success"
+                    onClick={() => window.open('https://wa.me/905069510808?text=Hi Alper, I saw your portfolio and would like to discuss a potential opportunity.', '_blank')}
+                  >
+                    <i className="fab fa-whatsapp me-2"></i>
+                    WhatsApp
+                  </button>
+                </div>
               </div>
             </div>
           </div>

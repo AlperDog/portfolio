@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 
 const HeroSection: React.FC = () => {
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ['Developer', 'Creator', 'Innovator', 'Problem Solver'];
+  const words = ['Full-Stack Developer', 'React Specialist', 'TypeScript Expert', 'Problem Solver'];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWord((prev) => (prev + 1) % words.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   return (
     <section id="home" className="d-flex align-items-center min-vh-100" 
@@ -45,7 +45,7 @@ const HeroSection: React.FC = () => {
               Hi, I'm <span style={{ color: '#aa00ff' }}>Alper</span>
             </h1>
             <h2 className="h3 text-white mb-4">
-              A Creative{' '}
+              A{' '}
               <span 
                 className="fw-bold"
                 style={{ 
@@ -57,10 +57,18 @@ const HeroSection: React.FC = () => {
                 {words[currentWord]}
               </span>
             </h2>
-            <p className="lead text-white-50 mb-5">
-              Crafting digital experiences that are not only functional, 
-              but fun and memorable. Let's build something amazing together!
+            <p className="lead text-white-50 mb-4">
+              Building scalable web applications with modern technologies. 
+              Specialized in React, TypeScript, and full-stack development.
             </p>
+            <div className="mb-4">
+              <div className="d-flex flex-wrap gap-2 mb-3">
+                <span className="badge bg-primary">React</span>
+                <span className="badge bg-info">TypeScript</span>
+                <span className="badge bg-success">Node.js</span>
+                <span className="badge bg-warning">Full-Stack</span>
+              </div>
+            </div>
             <div className="d-flex flex-wrap gap-3">
               <button className="btn btn-custom" onClick={() => window.open('mailto:dogramacialper98@gmail.com', '_blank')}>
                 <i className="fas fa-briefcase me-2"></i>
@@ -73,6 +81,15 @@ const HeroSection: React.FC = () => {
                 <i className="fas fa-folder me-2"></i>
                 View Projects
               </button>
+              <a 
+                href="https://github.com/AlperDog" 
+                className="btn btn-outline-secondary btn-lg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-github me-2"></i>
+                GitHub
+              </a>
             </div>
           </div>
           <div className="col-lg-6 text-center">

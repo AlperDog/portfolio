@@ -5,24 +5,97 @@ interface Skill {
   icon: string;
   color: string;
   description: string;
+  level: 'Expert' | 'Advanced' | 'Intermediate';
 }
 
 const Skills: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const skills: Skill[] = [
-    { name: 'HTML5', icon: 'fab fa-html5', color: '#E34F26', description: 'Semantic, accessible, and SEO-friendly markup.' },
-    { name: 'CSS3', icon: 'fab fa-css3-alt', color: '#1572B6', description: 'Responsive layouts, Flexbox, Grid, and animations.' },
-    { name: 'JavaScript', icon: 'fab fa-js-square', color: '#F7DF1E', description: 'Modern ES6+, asynchronous programming, DOM manipulation.' },
-    { name: 'React', icon: 'fab fa-react', color: '#61DAFB', description: 'Component-based UI, hooks, and state management.' },
-    { name: 'Node.js', icon: 'fab fa-node-js', color: '#339933', description: 'Backend development, REST APIs, and tooling.' },
-    { name: 'Bootstrap', icon: 'fab fa-bootstrap', color: '#7952B3', description: 'Rapid prototyping with modern UI components.' },
-    { name: 'Git', icon: 'fab fa-git-alt', color: '#F05032', description: 'Version control, branching, and collaboration.' },
-    { name: 'Figma', icon: 'fab fa-figma', color: '#F24E1E', description: 'UI/UX design, prototyping, and wireframing.' },
-    { name: 'Game Dev', icon: 'fas fa-gamepad', color: '#aa00ff', description: 'Building interactive games and playful experiences.' },
-    { name: 'UI/UX Design', icon: 'fas fa-pencil-ruler', color: '#00bcd4', description: 'User-centered design and usability best practices.' },
-    { name: 'REST APIs', icon: 'fas fa-plug', color: '#ff9800', description: 'Designing and consuming RESTful services.' },
-    { name: 'Agile', icon: 'fas fa-sitemap', color: '#4caf50', description: 'Iterative development and team collaboration.' },
+    { 
+      name: 'React', 
+      icon: 'fab fa-react', 
+      color: '#61DAFB', 
+      description: 'Component-based architecture, hooks, state management, and modern React patterns.',
+      level: 'Expert'
+    },
+    { 
+      name: 'TypeScript', 
+      icon: 'fab fa-js-square', 
+      color: '#3178C6', 
+      description: 'Type-safe development, interfaces, generics, and advanced TypeScript features.',
+      level: 'Advanced'
+    },
+    { 
+      name: 'JavaScript', 
+      icon: 'fab fa-js-square', 
+      color: '#F7DF1E', 
+      description: 'ES6+, async/await, DOM manipulation, and modern JavaScript patterns.',
+      level: 'Expert'
+    },
+    { 
+      name: 'Node.js', 
+      icon: 'fab fa-node-js', 
+      color: '#339933', 
+      description: 'Backend development, REST APIs, Express.js, and server-side logic.',
+      level: 'Advanced'
+    },
+    { 
+      name: 'HTML5', 
+      icon: 'fab fa-html5', 
+      color: '#E34F26', 
+      description: 'Semantic markup, accessibility, SEO optimization, and modern HTML standards.',
+      level: 'Expert'
+    },
+    { 
+      name: 'CSS3', 
+      icon: 'fab fa-css3-alt', 
+      color: '#1572B6', 
+      description: 'Flexbox, Grid, animations, responsive design, and modern CSS techniques.',
+      level: 'Advanced'
+    },
+    { 
+      name: 'Bootstrap', 
+      icon: 'fab fa-bootstrap', 
+      color: '#7952B3', 
+      description: 'Rapid prototyping, responsive components, and modern UI development.',
+      level: 'Advanced'
+    },
+    { 
+      name: 'Git', 
+      icon: 'fab fa-git-alt', 
+      color: '#F05032', 
+      description: 'Version control, branching strategies, collaboration, and CI/CD workflows.',
+      level: 'Advanced'
+    },
+    { 
+      name: 'REST APIs', 
+      icon: 'fas fa-plug', 
+      color: '#ff9800', 
+      description: 'API design, integration, authentication, and third-party service consumption.',
+      level: 'Advanced'
+    },
+    { 
+      name: 'Real-time Communication', 
+      icon: 'fas fa-broadcast-tower', 
+      color: '#00bcd4', 
+      description: 'WebSocket, Socket.io, real-time data synchronization, and live features.',
+      level: 'Intermediate'
+    },
+    { 
+      name: 'Database Design', 
+      icon: 'fas fa-database', 
+      color: '#4caf50', 
+      description: 'MongoDB, data modeling, CRUD operations, and database optimization.',
+      level: 'Intermediate'
+    },
+    { 
+      name: 'UI/UX Design', 
+      icon: 'fas fa-pencil-ruler', 
+      color: '#aa00ff', 
+      description: 'User-centered design, responsive layouts, accessibility, and modern UX principles.',
+      level: 'Advanced'
+    },
   ];
 
   useEffect(() => {
@@ -47,14 +120,33 @@ const Skills: React.FC = () => {
     };
   }, []);
 
+  const getLevelColor = (level: string) => {
+    switch (level) {
+      case 'Expert': return '#28a745';
+      case 'Advanced': return '#17a2b8';
+      case 'Intermediate': return '#ffc107';
+      default: return '#6c757d';
+    }
+  };
+
   return (
     <section id="skills" className="py-5">
       <div className="container">
-        <h2 className="section-title">Skills & Expertise</h2>
+        <h2 className="section-title">Technical Skills</h2>
+        <p className="text-center text-white-50 mb-5">
+          A comprehensive skill set focused on modern web development technologies and best practices.
+        </p>
         <div className="row g-4">
           {skills.map((skill, index) => (
             <div key={skill.name} className="col-lg-4 col-md-6">
-              <div className="card-custom text-center h-100 p-3" style={{ borderTop: `4px solid ${skill.color}`, boxShadow: isVisible ? '0 4px 24px rgba(0,0,0,0.15)' : 'none', transition: 'box-shadow 0.5s' }}>
+              <div className="card-custom text-center h-100 p-3" style={{ 
+                borderTop: `4px solid ${skill.color}`, 
+                boxShadow: isVisible ? '0 4px 24px rgba(0,0,0,0.15)' : 'none', 
+                transition: 'box-shadow 0.5s',
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                opacity: isVisible ? 1 : 0,
+                transitionDelay: `${index * 0.1}s`
+              }}>
                 <div 
                   className="mb-3"
                   style={{ 
@@ -65,38 +157,58 @@ const Skills: React.FC = () => {
                 >
                   <i className={skill.icon}></i>
                 </div>
-                <h5 className="text-white mb-2">{skill.name}</h5>
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <h5 className="text-white mb-0">{skill.name}</h5>
+                  <span 
+                    className="badge"
+                    style={{
+                      backgroundColor: getLevelColor(skill.level),
+                      color: 'white',
+                      fontSize: '0.7rem'
+                    }}
+                  >
+                    {skill.level}
+                  </span>
+                </div>
                 <p className="text-white-50 small mb-0">{skill.description}</p>
               </div>
             </div>
           ))}
         </div>
+        
         {/* Additional skills section */}
         <div className="row mt-5">
           <div className="col-12">
             <div className="card-custom">
-              <h3 className="h4 text-white mb-4 text-center">What I Bring to the Table</h3>
+              <h3 className="h4 text-white mb-4 text-center">Professional Strengths</h3>
               <div className="row g-3">
-                <div className="col-md-4 text-center">
+                <div className="col-md-3 text-center">
                   <div className="mb-3" style={{ fontSize: '3rem', color: '#aa00ff' }}>
                     <i className="fas fa-lightbulb"></i>
                   </div>
-                  <h5 className="text-white">Creative Problem Solving</h5>
-                  <p className="text-white-50 small">Finding innovative solutions to complex challenges</p>
+                  <h5 className="text-white">Problem Solving</h5>
+                  <p className="text-white-50 small">Analytical thinking and creative solutions</p>
                 </div>
-                <div className="col-md-4 text-center">
+                <div className="col-md-3 text-center">
                   <div className="mb-3" style={{ fontSize: '3rem', color: '#aa00ff' }}>
                     <i className="fas fa-users"></i>
                   </div>
                   <h5 className="text-white">Team Collaboration</h5>
-                  <p className="text-white-50 small">Working effectively in diverse team environments</p>
+                  <p className="text-white-50 small">Effective communication and teamwork</p>
                 </div>
-                <div className="col-md-4 text-center">
+                <div className="col-md-3 text-center">
                   <div className="mb-3" style={{ fontSize: '3rem', color: '#aa00ff' }}>
                     <i className="fas fa-rocket"></i>
                   </div>
                   <h5 className="text-white">Fast Learning</h5>
-                  <p className="text-white-50 small">Quickly adapting to new technologies and frameworks</p>
+                  <p className="text-white-50 small">Quick adaptation to new technologies</p>
+                </div>
+                <div className="col-md-3 text-center">
+                  <div className="mb-3" style={{ fontSize: '3rem', color: '#aa00ff' }}>
+                    <i className="fas fa-code"></i>
+                  </div>
+                  <h5 className="text-white">Clean Code</h5>
+                  <p className="text-white-50 small">Maintainable and scalable solutions</p>
                 </div>
               </div>
             </div>

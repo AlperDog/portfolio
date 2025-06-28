@@ -1,4 +1,4 @@
-# Alper Doğramacı - Software Developer Portfolio
+# Alper Doğramacı - Full-Stack Developer Portfolio
 
 ## 🌐 Live Site
 
@@ -6,65 +6,97 @@
 
 ## 👨‍💻 About Me
 
-I'm a passionate software developer with expertise in modern web technologies. I build clean, scalable applications with a focus on user experience and code quality.
+I'm a passionate full-stack developer with a strong foundation in engineering and a proven track record of building scalable web applications. My background in Petroleum and Natural Gas Engineering from METU has equipped me with analytical problem-solving skills that I apply to software development.
+
+I specialize in React, TypeScript, and Node.js, creating applications that are not only functional but also provide exceptional user experiences. My projects demonstrate expertise in real-time communication, API integration, and modern web development practices.
 
 ## 🚀 Featured Projects
 
-### Task Manager App
+### Watch Party - Collaborative Streaming Platform
+
+- **Status**: In Development
+- **Tech Stack**: TypeScript, React, Node.js, WebRTC, Socket.io
+- **Key Features**: Real-time video synchronization, live chat, room management, WebRTC implementation
+- **GitHub**: [https://github.com/AlperDog/watch-party](https://github.com/AlperDog/watch-party)
+
+### Social Media Hashtag Trend Analyzer
+
+- **Status**: In Development
+- **Tech Stack**: React, Node.js, MongoDB, Twitter API, YouTube API, NLP
+- **Key Features**: Multi-platform API integration, real-time data processing, AI/ML implementation, data visualization
+- **GitHub**: [https://github.com/AlperDog/hashtag-analyzer](https://github.com/AlperDog/hashtag-analyzer)
+
+### Task Management App
 
 - **Live Demo**: [https://AlperDog.github.io/task-manager-app](https://AlperDog.github.io/task-manager-app)
-- **Tech Stack**: React 18, TypeScript, Bootstrap 5, LocalStorage
-- **Key Features**: CRUD operations, category management, priority levels, search/filter, responsive design
+- **Tech Stack**: React 18, TypeScript, Bootstrap 5, LocalStorage, CRUD Operations
+- **Key Features**: Drag & drop interface, real-time updates, Kanban board, priority levels, responsive design
 - **GitHub**: [https://github.com/AlperDog/task-manager-app](https://github.com/AlperDog/task-manager-app)
+
+### Weather Dashboard
+
+- **Live Demo**: [https://AlperDog.github.io/weather-dashboard-app](https://AlperDog.github.io/weather-dashboard-app)
+- **Tech Stack**: React 18, TypeScript, Weather API, Geolocation, Bootstrap 5, Chart.js
+- **Key Features**: Location-based weather data, 5-day forecast, interactive maps, data visualization
+- **GitHub**: [https://github.com/AlperDog/weather-dashboard-app](https://github.com/AlperDog/weather-dashboard-app)
 
 ### Stopwatch App
 
 - **Live Demo**: [https://AlperDog.github.io/stopwatch-app](https://AlperDog.github.io/stopwatch-app)
 - **Tech Stack**: React 18, TypeScript, Bootstrap 5, CSS3
-- **Key Features**: Precision timing, lap functionality, responsive design, dark theme
+- **Key Features**: Millisecond precision, lap timing, clean TypeScript implementation, responsive design
 - **GitHub**: [https://github.com/AlperDog/stopwatch-app](https://github.com/AlperDog/stopwatch-app)
-
-### Weather Dashboard
-
-- **Live Demo**: [https://AlperDog.github.io/weather-dashboard-app](https://AlperDog.github.io/weather-dashboard-app)
-- **Tech Stack**: React 18, TypeScript, Weather API, Geolocation, Bootstrap 5
-- **Key Features**: Real-time weather data, 5-day forecast, location detection, responsive design
-- **GitHub**: [https://github.com/AlperDog/weather-dashboard-app](https://github.com/AlperDog/weather-dashboard-app)
-
-### Portfolio Website
-
-- **Live Demo**: [https://alperdog.github.io/portfolio](https://alperdog.github.io/portfolio)
-- **Tech Stack**: React 18, TypeScript, Bootstrap 5, CSS3
-- **Key Features**: Responsive design, interactive components, mini-games, dark theme
 
 ## 🛠️ Technical Skills
 
-**Frontend**: React 18, TypeScript, JavaScript (ES6+), HTML5, CSS3  
-**UI/UX**: Bootstrap 5, Responsive Design, CSS Animations  
-**Tools**: Git, npm, VS Code  
-**Deployment**: GitHub Pages, Netlify
+### Core Technologies
 
-## 💼 What I Bring to Your Team
+- **Frontend**: React 18, TypeScript, JavaScript (ES6+), HTML5, CSS3
+- **Backend**: Node.js, Express.js, REST APIs
+- **Database**: MongoDB, LocalStorage
+- **UI/UX**: Bootstrap 5, Responsive Design, CSS Animations
+- **Real-time**: WebSocket, Socket.io, WebRTC
+- **Tools**: Git, npm, VS Code, GitHub Pages
 
-- **Clean Code**: TypeScript for type safety and maintainable code
-- **User-Focused**: Responsive design and intuitive user interfaces
-- **Problem Solver**: Efficient algorithms and optimized performance
-- **Team Player**: Clear documentation and well-structured projects
-- **Fast Learner**: Quick to adapt to new technologies and frameworks
+### Skill Levels
+
+- **Expert**: React, JavaScript, HTML5
+- **Advanced**: TypeScript, Node.js, Bootstrap, Git, REST APIs, UI/UX Design
+- **Intermediate**: Real-time Communication, Database Design
+
+## 💼 Professional Strengths
+
+- **Problem Solving**: Analytical thinking and creative solutions
+- **Team Collaboration**: Effective communication and teamwork
+- **Fast Learning**: Quick adaptation to new technologies
+- **Clean Code**: Maintainable and scalable solutions
+- **Full-Stack Development**: End-to-end application development
+- **API Integration**: Third-party service consumption and design
+
+## 🎯 Key Achievements
+
+- Built 6+ production-ready web applications
+- Implemented real-time features using WebSocket technology
+- Integrated multiple third-party APIs and services
+- Maintained 100% deployment success rate with GitHub Pages
+- Developed applications with modern TypeScript patterns
 
 ## 📫 Let's Connect
 
 - **GitHub**: [https://github.com/AlperDog](https://github.com/AlperDog)
-- **Portfolio**: [https://AlperDog.github.io/portfolio](https://AlperDog.github.io/portfolio)
+- **LinkedIn**: [https://www.linkedin.com/in/dogramacialper/](https://www.linkedin.com/in/dogramacialper/)
+- **Portfolio**: [https://alperdog.github.io/portfolio](https://alperdog.github.io/portfolio)
 - **Email**: dogramacialper98@gmail.com
+- **WhatsApp**: +90 506 951 0808
 
 ## 🎯 Available for
 
-- Frontend Developer positions
-- React/TypeScript projects
-- UI/UX development
-- Full-stack opportunities
+- Full-Stack Developer positions
+- React/TypeScript specialist roles
+- Frontend development opportunities
+- Remote work and relocation opportunities
+- Contract and freelance projects
 
 ---
 
-_Ready to contribute to your next project. Let's build something amazing together._
+_I'm actively seeking new opportunities and excited to contribute to innovative projects. Let's discuss how I can help bring your ideas to life!_
