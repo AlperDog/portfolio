@@ -7,7 +7,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [skillsClickCount, setSkillsClickCount] = useState(0);
-  const [showWaterSplash, setShowWaterSplash] = useState(false);
+  const [showOopsText, setShowOopsText] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,12 +24,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
       if (newCount === 31) {
         // Trigger yogurt splash effect
         triggerYogurtSplash();
-        // Show splash effect
-        setShowWaterSplash(true);
-        // Reset counter after 5 seconds
-        setTimeout(() => setSkillsClickCount(0), 5000);
-        // Hide splash effect after 4 seconds
-        setTimeout(() => setShowWaterSplash(false), 4000);
+        // Show OOPS text
+        setShowOopsText(true);
+        // Reset counter after 15 seconds
+        setTimeout(() => setSkillsClickCount(0), 15000);
+        // Hide OOPS text after 10 seconds
+        setTimeout(() => setShowOopsText(false), 10000);
       }
       return newCount;
     });
@@ -38,14 +38,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
   const triggerYogurtSplash = () => {
     const waterEmojis = ['💧', '🌊', '💦', '🌊', '💧', '💦', '🌊', '💧'];
     
-    // Create yogurt particles (white drops)
-    for (let i = 0; i < 80; i++) {
+    // Create yogurt particles (white drops) - bigger and more
+    for (let i = 0; i < 120; i++) {
       setTimeout(() => {
         const drop = document.createElement('div');
         drop.className = 'yogurt-drop';
         
-        // Random size for yogurt drops (larger than water drops)
-        const size = Math.random() * 15 + 8;
+        // Much bigger size for yogurt drops
+        const size = Math.random() * 30 + 15;
         
         drop.style.cssText = `
           position: fixed;
@@ -58,13 +58,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
           pointer-events: none;
           z-index: 10000;
           transform: translate(-50%, -50%);
-          animation: yogurtSplash 3s ease-out forwards;
-          box-shadow: 0 0 10px rgba(255,255,255,0.3);
+          animation: yogurtSplash 10s ease-out forwards;
+          box-shadow: 0 0 15px rgba(255,255,255,0.4);
         `;
         
-        // Random direction and distance (more spread out like yogurt spilling)
+        // Much larger spread to cover more screen
         const angle = Math.random() * Math.PI * 2;
-        const distance = Math.random() * 300 + 150;
+        const distance = Math.random() * 600 + 200;
         const endX = Math.cos(angle) * distance;
         const endY = Math.sin(angle) * distance;
         
@@ -73,17 +73,17 @@ const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
         
         document.body.appendChild(drop);
         
-        // Remove drop after animation
+        // Keep particles on screen for 10 seconds
         setTimeout(() => {
           if (drop.parentNode) {
             drop.parentNode.removeChild(drop);
           }
-        }, 3000);
-      }, i * 15);
+        }, 10000);
+      }, i * 25); // Slower particle creation
     }
 
-    // Create water emoji particles
-    for (let i = 0; i < 20; i++) {
+    // Create water emoji particles - bigger and more
+    for (let i = 0; i < 30; i++) {
       setTimeout(() => {
         const emoji = document.createElement('div');
         emoji.className = 'water-emoji';
@@ -93,17 +93,17 @@ const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
           position: fixed;
           top: 50%;
           left: 50%;
-          font-size: ${Math.random() * 20 + 15}px;
+          font-size: ${Math.random() * 35 + 20}px;
           pointer-events: none;
           z-index: 10001;
           transform: translate(-50%, -50%);
-          animation: emojiSplash 2.5s ease-out forwards;
+          animation: emojiSplash 10s ease-out forwards;
           filter: brightness(1.2) contrast(1.1);
         `;
         
-        // Random direction for emojis
+        // Larger spread for emojis
         const angle = Math.random() * Math.PI * 2;
-        const distance = Math.random() * 250 + 100;
+        const distance = Math.random() * 500 + 150;
         const endX = Math.cos(angle) * distance;
         const endY = Math.sin(angle) * distance;
         
@@ -112,13 +112,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
         
         document.body.appendChild(emoji);
         
-        // Remove emoji after animation
+        // Keep emojis on screen for 10 seconds
         setTimeout(() => {
           if (emoji.parentNode) {
             emoji.parentNode.removeChild(emoji);
           }
-        }, 2500);
-      }, i * 50);
+        }, 10000);
+      }, i * 80); // Slower emoji creation
     }
   };
 
@@ -213,8 +213,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
         </div>
       </nav>
 
-      {/* Yogurt Splash Effect */}
-      {showWaterSplash && (
+      {/* OOPS Text */}
+      {showOopsText && (
         <div 
           className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
           style={{ 
@@ -223,9 +223,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNameClick }) => {
           }}
         >
           <div className="text-center text-white">
-            <div className="display-4 mb-3">🥛💧🌊</div>
-            <div className="h5">Yogurt splash activated!</div>
-            <div className="text-white-50">You found the hidden yogurt spill effect!</div>
+            <div className="display-1 fw-bold mb-0" style={{ 
+              fontSize: '8rem',
+              textShadow: '0 0 30px rgba(255,255,255,0.8)',
+              animation: 'pulse 0.5s ease-in-out infinite'
+            }}>
+              OOPS!
+            </div>
           </div>
         </div>
       )}
