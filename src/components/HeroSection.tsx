@@ -1,138 +1,152 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+
+const words = [
+  'Full-Stack Developer',
+  'React Specialist',
+  'TypeScript Expert',
+  'Problem Solver',
+];
+
+// Night sky particle configuration
+const NUM_STARS = 80; // Main bright stars
+const NUM_TWINKLE_STARS = 120; // Smaller twinkling stars
+const NUM_DUST_PARTICLES = 200; // Very small dust particles
 
 const HeroSection: React.FC = () => {
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ['Full-Stack Developer', 'React Specialist', 'TypeScript Expert', 'Problem Solver'];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWord((prev) => (prev + 1) % words.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, [words.length]);
+  }, []);
+
+  // Memoize random particle styles so they don't change on every render
+  const particles = useMemo(() => {
+    const allParticles = [];
+    
+    // Generate main bright stars
+    for (let i = 0; i < NUM_STARS; i++) {
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const size = 2 + Math.random() * 3; // 2-5px
+      const duration = 4 + Math.random() * 3; // 4-7s
+      const delay = Math.random() * 4; // 0-4s
+      const brightness = 0.7 + Math.random() * 0.3; // 0.7-1.0
+      allParticles.push({ 
+        left, top, size, duration, delay, brightness, 
+        type: 'star',
+        color: Math.random() > 0.8 ? '#ffffff' : '#aa00ff' // 20% white, 80% purple
+      });
+    }
+    
+    // Generate twinkling stars
+    for (let i = 0; i < NUM_TWINKLE_STARS; i++) {
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const size = 1 + Math.random() * 2; // 1-3px
+      const duration = 2 + Math.random() * 2; // 2-4s
+      const delay = Math.random() * 3; // 0-3s
+      const brightness = 0.4 + Math.random() * 0.4; // 0.4-0.8
+      allParticles.push({ 
+        left, top, size, duration, delay, brightness, 
+        type: 'twinkle',
+        color: Math.random() > 0.7 ? '#ffffff' : '#aa00ff' // 30% white, 70% purple
+      });
+    }
+    
+    // Generate dust particles
+    for (let i = 0; i < NUM_DUST_PARTICLES; i++) {
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const size = 0.5 + Math.random() * 1; // 0.5-1.5px
+      const duration = 6 + Math.random() * 4; // 6-10s
+      const delay = Math.random() * 5; // 0-5s
+      const brightness = 0.2 + Math.random() * 0.3; // 0.2-0.5
+      allParticles.push({ 
+        left, top, size, duration, delay, brightness, 
+        type: 'dust',
+        color: Math.random() > 0.6 ? '#ffffff' : '#aa00ff' // 40% white, 60% purple
+      });
+    }
+    
+    return allParticles;
+  }, []);
 
   return (
-    <section id="home" className="d-flex align-items-center min-vh-100" 
-             style={{ 
-               background: 'linear-gradient(135deg, #121212 0%, #1a1a1a 100%)',
-               position: 'relative',
-               overflow: 'hidden'
-             }}>
-      {/* Animated background particles */}
-      <div className="position-absolute w-100 h-100" style={{ zIndex: 1 }}>
-        {[...Array(20)].map((_, i) => (
+    <section id="home" className="hero-section">
+      <div className="hero-bg-particles" aria-hidden="true">
+        {particles.map((p, i) => (
           <div
             key={i}
-            className="position-absolute"
+            className={`hero-particle hero-particle-${p.type}`}
             style={{
-              width: '4px',
-              height: '4px',
-              background: '#aa00ff',
-              borderRadius: '50%',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${3 + Math.random() * 2}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 2}s`
+              left: `${p.left}%`,
+              top: `${p.top}%`,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              opacity: p.brightness,
+              backgroundColor: p.color,
+              animation: p.type === 'twinkle' 
+                ? `twinkle ${p.duration}s ease-in-out infinite` 
+                : `float ${p.duration}s ease-in-out infinite`,
+              animationDelay: `${p.delay}s`
             }}
           />
         ))}
       </div>
-
-      <div className="container position-relative" style={{ zIndex: 2 }}>
-        <div className="row align-items-center justify-content-center">
-          <div className="col-lg-5 col-xl-4 fade-in">
-            <h1 className="display-3 fw-bold text-white mb-4" style={{ 
-              fontSize: 'clamp(1.75rem, 8vw, 3.5rem)',
-              lineHeight: '1.1'
-            }}>
-              Hi, I'm <span style={{ color: '#aa00ff' }}>Alper</span>
-            </h1>
-            <h2 className="h3 text-white mb-4" style={{ 
-              fontSize: 'clamp(1.25rem, 5vw, 1.75rem)',
-              lineHeight: '1.3'
-            }}>
-              A{' '}
-              <span 
-                className="fw-bold"
-                style={{ 
-                  color: '#aa00ff',
-                  minHeight: 'clamp(2rem, 5vw, 2.5rem)',
-                  display: 'inline-block'
-                }}
-              >
-                {words[currentWord]}
-              </span>
-            </h2>
-            <p className="lead text-white-50 mb-4" style={{ 
-              fontSize: 'clamp(0.9rem, 3.5vw, 1.25rem)',
-              lineHeight: '1.6'
-            }}>
-              Building scalable web applications with modern technologies. 
-              Specialized in React, TypeScript, and full-stack development.
-            </p>
-            <div className="mb-4">
-              <div className="d-flex flex-wrap gap-2 mb-3">
-                <span className="badge bg-primary" style={{ 
-                  fontSize: 'clamp(0.6rem, 2.5vw, 0.75rem)',
-                  padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
-                }}>React</span>
-                <span className="badge bg-info" style={{ 
-                  fontSize: 'clamp(0.6rem, 2.5vw, 0.75rem)',
-                  padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
-                }}>TypeScript</span>
-                <span className="badge bg-success" style={{ 
-                  fontSize: 'clamp(0.6rem, 2.5vw, 0.75rem)',
-                  padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
-                }}>Node.js</span>
-                <span className="badge bg-warning" style={{ 
-                  fontSize: 'clamp(0.6rem, 2.5vw, 0.75rem)',
-                  padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
-                }}>Full-Stack</span>
-              </div>
-            </div>
-            <div className="d-flex flex-wrap gap-3" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem) !important' }}>
-              <button className="btn btn-custom" onClick={() => window.open('mailto:dogramacialper98@gmail.com', '_blank')}>
-                <i className="fas fa-briefcase me-2"></i>
-                Hire Me
-              </button>
-              <button className="btn btn-outline-light btn-lg" onClick={() => {
-                const el = document.getElementById('projects');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}>
-                <i className="fas fa-folder me-2"></i>
-                View Projects
-              </button>
-              <a 
-                href="https://github.com/AlperDog" 
-                className="btn btn-outline-secondary btn-lg"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-github me-2"></i>
-                GitHub
-              </a>
-            </div>
+      <div className="hero-overlay"></div>
+      <div className="hero-content">
+        <div className="hero-main">
+          <h1>
+            Hi, I'm <span className="hero-highlight">Alper</span>
+          </h1>
+          <h2>
+            <span className="hero-subtitle-static">A</span>
+            <span className="hero-subtitle-dynamic">{words[currentWord]}</span>
+          </h2>
+          <p>
+            Building scalable web applications with modern technologies.<br />
+            Specialized in React, TypeScript, and full-stack development.
+          </p>
+          <div className="hero-badges">
+            <span className="badge react">React</span>
+            <span className="badge ts">TypeScript</span>
+            <span className="badge node">Node.js</span>
+            <span className="badge fullstack">Full-Stack</span>
           </div>
-          <div className="col-lg-5 col-xl-4 text-center">
-            <div className="float" style={{ 
-              fontSize: 'clamp(4rem, 15vw, 8rem)', 
-              color: '#aa00ff' 
-            }}>
-              <i className="fas fa-code"></i>
-            </div>
+          <div className="hero-actions">
+            <a
+              href="https://www.linkedin.com/in/dogramacialper/"
+              className="btn primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fas fa-briefcase"></i> Hire Me
+            </a>
+            <a
+              href="https://github.com/AlperDog?tab=repositories"
+              className="btn outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-github"></i> GitHub
+            </a>
           </div>
+          {/* Show symbol below buttons on mobile only */}
+          <div className="hero-symbol-mobile">
+            <span className="hero-symbol">&lt;/&gt;</span>
+          </div>
+        </div>
+        {/* Show symbol in right column on desktop only */}
+        <div className="hero-symbol-container">
+          <span className="hero-symbol">&lt;/&gt;</span>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <div className="position-absolute bottom-0 start-50 translate-middle-x mb-4" style={{ zIndex: 2 }}>
-        <div className="text-center text-white-50">
-          <div className="mb-2" style={{ fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)' }}>Scroll Down</div>
-          <i className="fas fa-chevron-down" style={{ 
-            animation: 'float 2s ease-in-out infinite',
-            fontSize: 'clamp(1rem, 3vw, 1.25rem)'
-          }}></i>
-        </div>
+      <div className="hero-scroll-indicator">
+        <span>Scroll Down</span>
+        <i className="fas fa-chevron-down"></i>
       </div>
     </section>
   );

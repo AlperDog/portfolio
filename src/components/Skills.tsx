@@ -11,7 +11,8 @@ interface Skill {
 
 const Skills: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [activeCategory, setActiveCategory] = useState<string>('Frontend');
+  const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
 
   const skills: Skill[] = [
     // Frontend Skills
@@ -170,7 +171,6 @@ const Skills: React.FC = () => {
   ];
 
   const categories = [
-    { name: 'All', icon: 'fas fa-th', color: '#aa00ff' },
     { name: 'Frontend', icon: 'fas fa-desktop', color: '#61DAFB' },
     { name: 'Backend', icon: 'fas fa-server', color: '#339933' },
     { name: 'Database', icon: 'fas fa-database', color: '#4caf50' },
@@ -178,9 +178,7 @@ const Skills: React.FC = () => {
     { name: 'Design', icon: 'fas fa-palette', color: '#aa00ff' }
   ];
 
-  const filteredSkills = activeCategory === 'All' 
-    ? skills 
-    : skills.filter(skill => skill.category === activeCategory);
+  const filteredSkills = skills.filter(skill => skill.category === activeCategory);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -191,12 +189,10 @@ const Skills: React.FC = () => {
       },
       { threshold: 0.3 }
     );
-
     const element = document.getElementById('skills');
     if (element) {
       observer.observe(element);
     }
-
     return () => {
       if (element) {
         observer.unobserve(element);
@@ -223,207 +219,100 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-5">
+    <section id="skills" className="skills-section-easy py-5">
       <div className="container">
         <h2 className="section-title">Technical Skills</h2>
-        <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
-          A comprehensive skill set focused on modern web development technologies and best practices.
+        <p className="text-center text-white-50 mb-4" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>
+          Explore my core skills by category. Click a tab to view details.
         </p>
-
-        {/* Skills Overview */}
-        <div className="row mb-5">
-          <div className="col-12">
-            <div className="card-custom">
-              <div className="row text-center">
-                <div className="col-md-2 col-4 mb-3">
-                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#61DAFB' }}>
-                    <i className="fas fa-desktop"></i>
-                  </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>7 Frontend</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Technologies</p>
-                </div>
-                <div className="col-md-2 col-4 mb-3">
-                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#339933' }}>
-                    <i className="fas fa-server"></i>
-                  </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>4 Backend</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Technologies</p>
-                </div>
-                <div className="col-md-2 col-4 mb-3">
-                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#4caf50' }}>
-                    <i className="fas fa-database"></i>
-                  </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>2 Database</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Technologies</p>
-                </div>
-                <div className="col-md-2 col-4 mb-3">
-                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#F05032' }}>
-                    <i className="fas fa-tools"></i>
-                  </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>3 Tools</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Technologies</p>
-                </div>
-                <div className="col-md-2 col-4 mb-3">
-                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#aa00ff' }}>
-                    <i className="fas fa-palette"></i>
-                  </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>2 Design</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Technologies</p>
-                </div>
-                <div className="col-md-2 col-4 mb-3">
-                  <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#28a745' }}>
-                    <i className="fas fa-star"></i>
-                  </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>18 Total</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Skills</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Category Tabs */}
+        <div className="d-flex flex-wrap gap-2 justify-content-center mb-4">
+          {categories.map((category) => (
+            <button
+              key={category.name}
+              onClick={() => setActiveCategory(category.name)}
+              className={`btn ${activeCategory === category.name ? 'btn-custom' : 'btn-outline-light'} btn-sm`}
+              style={{ 
+                fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                padding: '0.5em 1.2em',
+                borderRadius: '999px',
+                fontWeight: 600
+              }}
+            >
+              <i className={`${category.icon} me-2`} style={{ color: category.color }}></i>
+              {category.name}
+            </button>
+          ))}
         </div>
-
-        {/* Category Filter */}
-        <div className="row mb-4">
-          <div className="col-12">
-            <div className="d-flex flex-wrap gap-2 justify-content-center" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem) !important' }}>
-              {categories.map((category) => (
-                <button
-                  key={category.name}
-                  onClick={() => setActiveCategory(category.name)}
-                  className={`btn ${activeCategory === category.name ? 'btn-custom' : 'btn-outline-light'} btn-sm`}
-                  style={{ 
-                    fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
-                    padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
-                  }}
-                >
-                  <i className={`${category.icon} me-2`} style={{ color: category.color }}></i>
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Skills Grid */}
-        <div className="row g-3 g-md-4">
+        {/* Skills Grid - compact, expandable chips */}
+        <div className="row g-3 justify-content-center skills-grid-row">
           {filteredSkills.map((skill, index) => (
-            <div key={skill.name} className="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <div className="card-custom text-center h-100 p-3" style={{ 
-                borderTop: `4px solid ${skill.color}`, 
-                boxShadow: isVisible ? '0 4px 24px rgba(0,0,0,0.15)' : 'none', 
-                transition: 'all 0.5s ease',
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                opacity: isVisible ? 1 : 0,
-                transitionDelay: `${index * 0.1}s`,
-                position: 'relative'
-              }}>
-                {/* Category Badge */}
-                <div className="position-absolute top-0 start-0 m-3">
-                  <span className="badge bg-secondary" style={{ 
-                    fontSize: 'clamp(0.5rem, 1.5vw, 0.65rem)',
-                    padding: 'clamp(0.2rem, 0.8vw, 0.3rem) clamp(0.4rem, 1.5vw, 0.6rem)'
-                  }}>
-                    {skill.category}
-                  </span>
-                </div>
-
-                {/* Skill Icon */}
-                <div 
-                  className="mb-3"
-                  style={{ 
-                    fontSize: 'clamp(2rem, 6vw, 3rem)', 
-                    color: skill.color,
-                    animation: isVisible ? 'pulse 2s ease-in-out infinite' : 'none' 
-                  }}
-                >
+            <div key={skill.name} className="col-6 col-md-4 col-lg-3 col-xl-3">
+              <div
+                className={`skill-chip-easy card-custom text-center h-100 p-2 ${expandedSkill === skill.name ? 'expanded' : ''}`}
+                style={{
+                  borderTop: `3px solid ${skill.color}`,
+                  boxShadow: isVisible ? '0 2px 12px rgba(0,0,0,0.10)' : 'none',
+                  transition: 'all 0.4s',
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  opacity: isVisible ? 1 : 0,
+                  transitionDelay: `${index * 0.07}s`,
+                  position: 'relative',
+                  background: 'rgba(30,30,40,0.92)',
+                  cursor: 'pointer',
+                  minHeight: expandedSkill === skill.name ? 170 : 90,
+                  zIndex: expandedSkill === skill.name ? 2 : 1
+                }}
+                onClick={() => setExpandedSkill(expandedSkill === skill.name ? null : skill.name)}
+                tabIndex={0}
+                onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && setExpandedSkill(expandedSkill === skill.name ? null : skill.name)}
+                aria-expanded={expandedSkill === skill.name}
+                aria-label={skill.name + (expandedSkill === skill.name ? ' details expanded' : '')}
+              >
+                <div className="mb-1" style={{ fontSize: '2rem', color: skill.color }}>
                   <i className={skill.icon}></i>
                 </div>
-
-                {/* Skill Name and Level */}
-                <div className="d-flex justify-content-between align-items-center mb-3">
-                  <h5 className="text-white mb-0" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}>{skill.name}</h5>
-                  <div className="d-flex align-items-center">
-                    <i className={`${getLevelIcon(skill.level)} me-1`} style={{ 
-                      color: getLevelColor(skill.level), 
-                      fontSize: 'clamp(0.7rem, 2vw, 0.8rem)' 
-                    }}></i>
-                    <span 
-                      className="badge"
-                      style={{
-                        backgroundColor: getLevelColor(skill.level),
-                        color: 'white',
-                        fontSize: 'clamp(0.6rem, 1.5vw, 0.7rem)',
-                        padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
-                      }}
-                    >
-                      {skill.level}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Skill Description */}
-                <p className="text-white-50 small mb-0" style={{ 
-                  fontSize: 'clamp(0.75rem, 2vw, 0.875rem)', 
-                  lineHeight: '1.5' 
-                }}>
-                  {skill.description}
-                </p>
+                <div className="fw-bold text-white mb-1" style={{ fontSize: '1rem' }}>{skill.name}</div>
+                {expandedSkill === skill.name && (
+                  <>
+                    <div className="d-flex justify-content-center align-items-center mb-2" style={{ gap: '0.5em' }}>
+                      <i className={`${getLevelIcon(skill.level)}`} style={{ color: getLevelColor(skill.level), fontSize: '1em' }}></i>
+                      <span className="badge" style={{ backgroundColor: getLevelColor(skill.level), color: 'white', fontSize: '0.8em', padding: '0.2em 0.7em' }}>{skill.level}</span>
+                    </div>
+                    <p className="text-white-50 small mb-0" style={{ fontSize: '0.95em', lineHeight: 1.5 }}>{skill.description}</p>
+                  </>
+                )}
               </div>
             </div>
           ))}
         </div>
-        
-        {/* Professional Strengths */}
-        <div className="row mt-5">
+        {/* Professional Strengths - compact row */}
+        <div className="row mt-5 justify-content-center">
           <div className="col-12">
-            <div className="card-custom">
-              <div className="text-center mb-4" style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', color: '#aa00ff' }}>
-                <i className="fas fa-trophy"></i>
+            <div className="d-flex flex-wrap justify-content-center gap-3 strengths-easy">
+              <div className="strength-card-easy">
+                <i className="fas fa-lightbulb"></i>
+                <span>Problem Solving</span>
               </div>
-              <h3 className="h4 text-white mb-4 text-center" style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)' }}>Professional Strengths</h3>
-              <div className="row g-4">
-                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
-                    <i className="fas fa-lightbulb"></i>
-                  </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Problem Solving</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Analytical thinking and creative solutions</p>
-                </div>
-                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
-                    <i className="fas fa-users"></i>
-                  </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Team Collaboration</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Effective communication and teamwork</p>
-                </div>
-                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
-                    <i className="fas fa-rocket"></i>
-                  </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Fast Learning</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Quick adaptation to new technologies</p>
-                </div>
-                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
-                    <i className="fas fa-code"></i>
-                  </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Clean Code</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Maintainable and scalable solutions</p>
-                </div>
-                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
-                    <i className="fas fa-mobile-alt"></i>
-                  </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Responsive Design</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Mobile-first approach and cross-device compatibility</p>
-                </div>
-                <div className="col-6 col-md-3 col-lg-3 col-xl-2 text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#aa00ff' }}>
-                    <i className="fas fa-clock"></i>
-                  </div>
-                  <h5 className="text-white" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' }}>Time Management</h5>
-                  <p className="text-white-50 small" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.875rem)' }}>Efficient project delivery and deadline adherence</p>
-                </div>
+              <div className="strength-card-easy">
+                <i className="fas fa-users"></i>
+                <span>Teamwork</span>
+              </div>
+              <div className="strength-card-easy">
+                <i className="fas fa-rocket"></i>
+                <span>Fast Learning</span>
+              </div>
+              <div className="strength-card-easy">
+                <i className="fas fa-code"></i>
+                <span>Clean Code</span>
+              </div>
+              <div className="strength-card-easy">
+                <i className="fas fa-mobile-alt"></i>
+                <span>Responsive Design</span>
+              </div>
+              <div className="strength-card-easy">
+                <i className="fas fa-clock"></i>
+                <span>Time Management</span>
               </div>
             </div>
           </div>

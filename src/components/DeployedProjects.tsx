@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const DeployedProjects: React.FC = () => {
+  const [expandedProject, setExpandedProject] = useState<number | null>(null);
+
   const deployedProjects = [
     {
       id: 1,
@@ -132,7 +134,7 @@ const DeployedProjects: React.FC = () => {
         <div className="row mb-5">
           <div className="col-12">
             <div className="card-custom">
-              <div className="row text-center">
+              <div className="row text-center project-stats-row">
                 <div className="col-md-3 col-6 mb-3">
                   <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-rocket"></i>
@@ -166,99 +168,110 @@ const DeployedProjects: React.FC = () => {
           </div>
         </div>
         
-        {/* Projects Grid */}
-        <div className="row g-4">
+        {/* Projects Grid - expandable cards */}
+        <div className="row g-4 projects-grid-row">
           {deployedProjects.map((project) => (
-            <div key={project.id} className="col-lg-6 col-xl-4">
-              <div className="card-custom h-100" style={{ 
-                borderTop: `4px solid ${project.status === 'Live' ? '#28a745' : '#ffc107'}`,
-                position: 'relative'
-              }}>
+            <div key={project.id} className="col-12 col-md-6 col-xl-4">
+              <div
+                className={`card-custom project-card-easy h-100 ${expandedProject === project.id ? 'expanded' : ''}`}
+                style={{ 
+                  borderTop: `4px solid ${project.status === 'Live' ? '#28a745' : '#ffc107'}`,
+                  position: 'relative',
+                  cursor: 'pointer',
+                  minHeight: expandedProject === project.id ? 340 : 120,
+                  transition: 'all 0.4s',
+                  zIndex: expandedProject === project.id ? 2 : 1
+                }}
+                onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
+                tabIndex={0}
+                onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && setExpandedProject(expandedProject === project.id ? null : project.id)}
+                aria-expanded={expandedProject === project.id}
+                aria-label={project.title + (expandedProject === project.id ? ' details expanded' : '')}
+              >
                 {/* Category Badge */}
                 <div className="position-absolute top-0 end-0 m-3">
                   {getCategoryBadge(project.category)}
                 </div>
-
                 {/* Project Header */}
-                <div className="text-center mb-4">
-                  <div style={{ fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', color: '#aa00ff' }}>
+                <div className="text-center mb-2">
+                  <div style={{ fontSize: 'clamp(2.2rem, 7vw, 3rem)', color: '#aa00ff' }}>
                     <i className={project.image}></i>
                   </div>
-                  <h3 className="h4 text-white mt-3 mb-2" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)' }}>{project.title}</h3>
-                  <div className="mb-3">
+                  <h3 className="h5 text-white mt-2 mb-1" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}>{project.title}</h3>
+                  <div className="mb-1">
                     {getStatusBadge(project.status)}
-                    <small className="text-white-50" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Updated: {project.lastUpdated}</small>
+                    <small className="text-white-50" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.8rem)' }}>Updated: {project.lastUpdated}</small>
                   </div>
                 </div>
-                
-                {/* Project Description */}
-                <p className="text-white-50 mb-4" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)', lineHeight: '1.6' }}>{project.description}</p>
-                
-                {/* Key Features */}
-                <div className="mb-4">
-                  <h6 className="text-white mb-3" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
-                    <i className="fas fa-star me-2" style={{ color: '#aa00ff' }}></i>
-                    Key Features
-                  </h6>
-                  <div className="row g-2">
-                    {project.features.map((feature, index) => (
-                      <div key={index} className="col-6">
-                        <small className="text-white-50 d-flex align-items-center" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
-                          <i className="fas fa-check me-2" style={{ color: '#aa00ff', fontSize: '0.7rem' }}></i>
-                          {feature}
-                        </small>
+                {/* Expandable Details */}
+                {expandedProject === project.id && (
+                  <>
+                    <p className="text-white-50 mb-3" style={{ fontSize: 'clamp(0.85rem, 2vw, 1rem)', lineHeight: '1.6' }}>{project.description}</p>
+                    {/* Key Features */}
+                    <div className="mb-3">
+                      <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.85rem, 2vw, 1rem)' }}>
+                        <i className="fas fa-star me-2" style={{ color: '#aa00ff' }}></i>
+                        Key Features
+                      </h6>
+                      <div className="row g-2">
+                        {project.features.map((feature, index) => (
+                          <div key={index} className="col-6">
+                            <small className="text-white-50 d-flex align-items-center" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.85rem)' }}>
+                              <i className="fas fa-check me-2" style={{ color: '#aa00ff', fontSize: '0.7rem' }}></i>
+                              {feature}
+                            </small>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Technologies */}
-                <div className="mb-4">
-                  <h6 className="text-white mb-3" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
-                    <i className="fas fa-tools me-2" style={{ color: '#aa00ff' }}></i>
-                    Technologies
-                  </h6>
-                  <div className="d-flex flex-wrap gap-1">
-                    {project.technologies.map((tech, index) => (
-                      <span key={index} className="badge bg-secondary" style={{ 
-                        fontSize: 'clamp(0.6rem, 2vw, 0.75rem)',
-                        padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
-                      }}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Action Buttons */}
-                <div className="d-flex gap-2 mt-auto" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem) !important' }}>
-                  <a 
-                    href={project.demoLink} 
-                    className="btn btn-custom btn-sm flex-fill"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ 
-                      fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
-                      padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
-                    }}
-                  >
-                    <i className="fas fa-external-link-alt me-2"></i>
-                    {project.status === 'Live' ? 'Live Demo' : 'View Project'}
-                  </a>
-                  <a 
-                    href={project.githubLink} 
-                    className="btn btn-outline-light btn-sm flex-fill"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ 
-                      fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
-                      padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
-                    }}
-                  >
-                    <i className="fab fa-github me-2"></i>
-                    Source Code
-                  </a>
-                </div>
+                    </div>
+                    {/* Technologies */}
+                    <div className="mb-3">
+                      <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.85rem, 2vw, 1rem)' }}>
+                        <i className="fas fa-tools me-2" style={{ color: '#aa00ff' }}></i>
+                        Technologies
+                      </h6>
+                      <div className="d-flex flex-wrap gap-1">
+                        {project.technologies.map((tech, index) => (
+                          <span key={index} className="badge bg-secondary" style={{ 
+                            fontSize: 'clamp(0.6rem, 2vw, 0.75rem)',
+                            padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
+                          }}>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Action Buttons */}
+                    <div className="d-flex gap-2 mt-auto mb-2 justify-content-center" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem) !important' }}>
+                      <a 
+                        href={project.demoLink} 
+                        className="btn btn-custom btn-sm flex-fill"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ 
+                          fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
+                          padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
+                        }}
+                      >
+                        <i className="fas fa-external-link-alt me-2"></i>
+                        {project.status === 'Live' ? 'Live Demo' : 'View Project'}
+                      </a>
+                      <a 
+                        href={project.githubLink} 
+                        className="btn btn-outline-light btn-sm flex-fill"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ 
+                          fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
+                          padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
+                        }}
+                      >
+                        <i className="fab fa-github me-2"></i>
+                        Source Code
+                      </a>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           ))}
@@ -279,13 +292,14 @@ const DeployedProjects: React.FC = () => {
               <div className="d-flex flex-wrap gap-3 justify-content-center" style={{ gap: 'clamp(0.75rem, 2vw, 1rem) !important' }}>
                 <button className="btn btn-custom" onClick={() => window.open('mailto:dogramacialper98@gmail.com', '_blank')} style={{ 
                   fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
-                  padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1.5rem, 3vw, 2rem)'
+                  padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1.5rem, 3vw, 2rem)',
+                  marginTop: '1.5rem'
                 }}>
                   <i className="fas fa-envelope me-2"></i>
                   Get in Touch
                 </button>
                 <a 
-                  href="https://github.com/AlperDog" 
+                  href="https://github.com/AlperDog?tab=repositories" 
                   className="btn btn-outline-light"
                   target="_blank"
                   rel="noopener noreferrer"

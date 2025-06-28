@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,138 @@ const Contact: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [connectClickCount, setConnectClickCount] = useState(0);
   const [showOopsText, setShowOopsText] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isHoldingHandshake, setIsHoldingHandshake] = useState(false);
+  const shakeStartTime = useRef<number | null>(null);
+  const shakeTimer = useRef<NodeJS.Timeout | null>(null);
+  const shakeActive = useRef(false);
+
+  // Check if device is mobile/tablet
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+      const isTablet = /ipad|android(?=.*\b(?!.*mobile))/i.test(userAgent);
+      setIsMobile(isMobileDevice || isTablet);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Shake detection for mobile devices
+  useEffect(() => {
+    if (!isMobile) return;
+
+    let lastUpdate = 0;
+    let lastX = 0, lastY = 0, lastZ = 0;
+    let shakeCount = 0;
+    const SHAKE_THRESHOLD = 15;
+
+    const handleShake = (event: DeviceMotionEvent) => {
+      const current = event.accelerationIncludingGravity;
+      if (!current) return;
+
+      const currentTime = new Date().getTime();
+      if ((currentTime - lastUpdate) > 100) {
+        const diffTime = currentTime - lastUpdate;
+        lastUpdate = currentTime;
+
+        const speed = Math.abs(current.x! + current.y! + current.z! - lastX - lastY - lastZ) / diffTime * 10000;
+
+        if (speed > SHAKE_THRESHOLD) {
+          shakeCount++;
+          if (shakeCount >= 3) { // Require 3 shakes to trigger
+            triggerYogurtSplash();
+            setShowOopsText(true);
+            setTimeout(() => setShowOopsText(false), 10000);
+            shakeCount = 0;
+          }
+        }
+
+        lastX = current.x!;
+        lastY = current.y!;
+        lastZ = current.z!;
+      }
+    };
+
+    // Request device motion permission on iOS
+    if (typeof DeviceMotionEvent !== 'undefined' && typeof (DeviceMotionEvent as any).requestPermission === 'function') {
+      (DeviceMotionEvent as any).requestPermission().then((permission: string) => {
+        if (permission === 'granted') {
+          window.addEventListener('devicemotion', handleShake);
+        }
+      });
+    } else {
+      window.addEventListener('devicemotion', handleShake);
+    }
+
+    return () => {
+      window.removeEventListener('devicemotion', handleShake);
+    };
+  }, [isMobile]);
+
+  // New: Custom shake detection for handshake hold
+  useEffect(() => {
+    if (!isMobile || !isHoldingHandshake) return;
+    let lastUpdate = 0;
+    let lastX = 0, lastY = 0, lastZ = 0;
+    let shakeCount = 0;
+    const SHAKE_THRESHOLD = 15;
+    let shakeDetected = false;
+
+    const handleShake = (event: DeviceMotionEvent) => {
+      const current = event.accelerationIncludingGravity;
+      if (!current) return;
+      const currentTime = new Date().getTime();
+      if ((currentTime - lastUpdate) > 100) {
+        const diffTime = currentTime - lastUpdate;
+        lastUpdate = currentTime;
+        const speed = Math.abs(current.x! + current.y! + current.z! - lastX - lastY - lastZ) / diffTime * 10000;
+        if (speed > SHAKE_THRESHOLD) {
+          if (!shakeActive.current) {
+            shakeActive.current = true;
+            shakeStartTime.current = Date.now();
+            shakeTimer.current = setTimeout(() => {
+              // 5 seconds of shaking
+              triggerYogurtSplash();
+              setShowOopsText(true);
+              setTimeout(() => setShowOopsText(false), 10000);
+              shakeActive.current = false;
+              setIsHoldingHandshake(false);
+            }, 5000);
+          }
+        } else {
+          // If not shaking, reset timer
+          if (shakeActive.current && shakeStartTime.current && Date.now() - shakeStartTime.current > 600) {
+            shakeActive.current = false;
+            shakeStartTime.current = null;
+            if (shakeTimer.current) clearTimeout(shakeTimer.current);
+          }
+        }
+        lastX = current.x!;
+        lastY = current.y!;
+        lastZ = current.z!;
+      }
+    };
+    // Request device motion permission on iOS
+    if (typeof DeviceMotionEvent !== 'undefined' && typeof (DeviceMotionEvent as any).requestPermission === 'function') {
+      (DeviceMotionEvent as any).requestPermission().then((permission: string) => {
+        if (permission === 'granted') {
+          window.addEventListener('devicemotion', handleShake);
+        }
+      });
+    } else {
+      window.addEventListener('devicemotion', handleShake);
+    }
+    return () => {
+      window.removeEventListener('devicemotion', handleShake);
+      if (shakeTimer.current) clearTimeout(shakeTimer.current);
+      shakeActive.current = false;
+      shakeStartTime.current = null;
+    };
+  }, [isMobile, isHoldingHandshake]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -25,6 +157,9 @@ const Contact: React.FC = () => {
   };
 
   const handleConnectClick = () => {
+    // Only trigger on click for desktop devices
+    if (isMobile) return;
+    
     setConnectClickCount(prev => {
       const newCount = prev + 1;
       if (newCount === 31) {
@@ -170,14 +305,14 @@ const Contact: React.FC = () => {
             className="section-title text-white" 
             onClick={handleConnectClick}
             style={{ 
-              cursor: 'pointer',
+              cursor: isMobile ? 'default' : 'pointer',
               position: 'relative',
               fontSize: 'clamp(1.5rem, 5vw, 2.5rem)'
             }}
-            title="Click me 31 times for a yogurt splash! 🥛💧"
+            title={isMobile ? "Shake your device for a yogurt splash! 🥛💧" : "Click me 31 times for a yogurt splash! 🥛💧"}
           >
             Let's Connect
-            {connectClickCount > 0 && connectClickCount < 31 && (
+            {!isMobile && connectClickCount > 0 && connectClickCount < 31 && (
               <span 
                 style={{
                   position: 'absolute',
@@ -191,6 +326,21 @@ const Contact: React.FC = () => {
                   animation: 'pulse 1s infinite'
                 }}
               ></span>
+            )}
+            {isMobile && (
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '-8px',
+                  right: '-8px',
+                  fontSize: 'clamp(1rem, 3vw, 1.5rem)',
+                  animation: 'pulse 2s ease-in-out infinite',
+                  color: '#aa00ff'
+                }}
+                title="Shake your device!"
+              >
+                📱
+              </div>
             )}
           </h2>
           <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}>
@@ -377,7 +527,7 @@ const Contact: React.FC = () => {
                   React, TypeScript, and modern web technologies. I'm open to remote work and relocation opportunities.
                 </p>
                 
-                <div className="row g-3 mb-4">
+                <div className="row g-3 mb-4 contact-social-row">
                   {socialLinks.map((social) => (
                     <div key={social.name} className="col-6 col-lg-6 col-xl-6">
                       <a
@@ -423,7 +573,14 @@ const Contact: React.FC = () => {
                 </div>
                 
                 <div className="text-center">
-                  <div className="mb-3" style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#aa00ff' }}>
+                  <div
+                    className="mb-3"
+                    style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: '#aa00ff', touchAction: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
+                    onTouchStart={() => isMobile && setIsHoldingHandshake(true)}
+                    onTouchEnd={() => isMobile && setIsHoldingHandshake(false)}
+                    onTouchCancel={() => isMobile && setIsHoldingHandshake(false)}
+                    title={isMobile ? 'Hold and shake for 5 seconds!' : undefined}
+                  >
                     <i className="fas fa-handshake"></i>
                   </div>
                   <h5 className="text-white" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>Ready to Collaborate?</h5>
@@ -431,30 +588,6 @@ const Contact: React.FC = () => {
                     I'm excited to discuss how I can contribute to your team and help bring your projects to life. 
                     Let's schedule a call to explore potential opportunities!
                   </p>
-                  <div className="mt-3">
-                    <button 
-                      className="btn btn-outline-light me-2"
-                      onClick={() => window.open('mailto:dogramacialper98@gmail.com?subject=Portfolio Contact - Job Opportunity', '_blank')}
-                      style={{ 
-                        fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
-                        padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
-                      }}
-                    >
-                      <i className="fas fa-envelope me-2"></i>
-                      Email Me
-                    </button>
-                    <button 
-                      className="btn btn-outline-success"
-                      onClick={() => window.open('https://wa.me/905069510808?text=Hi Alper, I saw your portfolio and would like to discuss a potential opportunity.', '_blank')}
-                      style={{ 
-                        fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
-                        padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
-                      }}
-                    >
-                      <i className="fab fa-whatsapp me-2"></i>
-                      WhatsApp
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
