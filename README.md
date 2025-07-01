@@ -8,9 +8,20 @@
 
 I'm a passionate full-stack developer with a strong foundation in engineering and a proven track record of building scalable web applications. My background in Petroleum and Natural Gas Engineering from METU has equipped me with analytical problem-solving skills that I apply to software development.
 
+My flagship project, **Poll App**, is a cross-platform, real-time polling application built with Flutter and a modern Go backend. It demonstrates my expertise in scalable architecture, real-time communication, and beautiful, responsive UI design. See below for details!
+
 I specialize in React, TypeScript, and Node.js, creating applications that are not only functional but also provide exceptional user experiences. My projects demonstrate expertise in real-time communication, API integration, and modern web development practices.
 
 ## 🚀 Featured Projects
+
+### Poll App - Real-Time Cross-Platform Polling (Flagship)
+
+- **Status**: Flagship Project
+- **Tech Stack**: Flutter, Go (Fiber/Echo), WebSocket, JWT, PostgreSQL, Redis, Docker, Riverpod, fl_chart
+- **Key Features**: Real-time voting, cross-platform (Android, iOS, Web, Desktop), JWT auth & guest access, live results with charts, admin dashboard, modern UI & responsive design, scalable Go backend, Docker-ready
+- **GitHub**: [https://github.com/AlperDog/poll_app](https://github.com/AlperDog/poll_app)
+
+A cross-platform, real-time polling app built with Flutter and a modern Go backend. Instantly create, join, and visualize live polls with beautiful charts and WebSocket-powered updates. Designed as the centerpiece of my portfolio.
 
 ### Watch Party - Collaborative Streaming Platform
 
