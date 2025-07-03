@@ -101,21 +101,21 @@ const HeroSection: React.FC = () => {
         <div className="hero-main">
           <h1>
             Hi, I'm <span className="hero-highlight">Alper</span>
-          </h1>
+            </h1>
           <h2>
             <span className="hero-subtitle-static">A</span>
             <span className="hero-subtitle-dynamic">{words[currentWord]}</span>
-          </h2>
+            </h2>
           <p>
             Building scalable web applications with modern technologies.<br />
             Specialized in React, TypeScript, and full-stack development.
-          </p>
+            </p>
           <div className="hero-badges">
             <span className="badge react">React</span>
             <span className="badge ts">TypeScript</span>
             <span className="badge node">Node.js</span>
             <span className="badge fullstack">Full-Stack</span>
-          </div>
+            </div>
           <div className="hero-actions">
             <a
               href="https://www.linkedin.com/in/dogramacialper/"

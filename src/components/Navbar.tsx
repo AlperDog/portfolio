@@ -175,16 +175,16 @@ const Navbar: React.FC = () => {
               </div>
             </div>
           )}
-          <button
+        <button 
             className={`navbar-burger${menuOpen ? ' open' : ''}`}
             aria-label="Menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(m => !m)}
-          >
+        >
             <span />
             <span />
             <span />
-          </button>
+        </button>
         </div>
         {menuOpen && <div className="navbar-overlay" onClick={() => setMenuOpen(false)} />}
       </nav>
@@ -192,7 +192,7 @@ const Navbar: React.FC = () => {
         <div className="celebration-secret-toast">
           <span role="img" aria-label="party">🎉</span>
           <b>Celebration!</b> You found the secret! <span role="img" aria-label="party">🥳</span>
-        </div>
+      </div>
       )}
     </>
   );

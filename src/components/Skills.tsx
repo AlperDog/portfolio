@@ -232,7 +232,7 @@ const Skills: React.FC = () => {
               key={category.name}
               onClick={() => setActiveCategory(category.name)}
               className={`btn ${activeCategory === category.name ? 'btn-custom' : 'btn-outline-light'} btn-sm`}
-              style={{ 
+                  style={{ 
                 fontSize: 'clamp(0.9rem, 2vw, 1rem)',
                 padding: '0.5em 1.2em',
                 borderRadius: '999px',
@@ -291,25 +291,25 @@ const Skills: React.FC = () => {
           <div className="col-12">
             <div className="d-flex flex-wrap justify-content-center gap-3 strengths-easy">
               <div className="strength-card-easy">
-                <i className="fas fa-lightbulb"></i>
+                    <i className="fas fa-lightbulb"></i>
                 <span>Problem Solving</span>
-              </div>
+                  </div>
               <div className="strength-card-easy">
-                <i className="fas fa-users"></i>
+                    <i className="fas fa-users"></i>
                 <span>Teamwork</span>
-              </div>
+                  </div>
               <div className="strength-card-easy">
                 <i className="fas fa-rocket"></i>
                 <span>Fast Learning</span>
-              </div>
+                </div>
               <div className="strength-card-easy">
                 <i className="fas fa-code"></i>
                 <span>Clean Code</span>
-              </div>
+                  </div>
               <div className="strength-card-easy">
                 <i className="fas fa-mobile-alt"></i>
                 <span>Responsive Design</span>
-              </div>
+                </div>
               <div className="strength-card-easy">
                 <i className="fas fa-clock"></i>
                 <span>Time Management</span>

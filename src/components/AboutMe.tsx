@@ -39,13 +39,13 @@ const AboutMe: React.FC = () => {
               </h3>
               <div className="about-journey-grid">
                 <div className="about-journey-card">
-                  <i className="fas fa-graduation-cap"></i>
+                    <i className="fas fa-graduation-cap"></i>
                   <h5 className="text-white mb-1">Education</h5>
                   <p className="text-white-50 small mb-0">Petroleum & Natural Gas Engineering</p>
                   <p className="text-white-50 small mb-0">METU</p>
                 </div>
                 <div className="about-journey-card">
-                  <i className="fas fa-code"></i>
+                    <i className="fas fa-code"></i>
                   <h5 className="text-white mb-1">Specialization</h5>
                   <p className="text-white-50 small mb-0">Full-Stack Development</p>
                   <p className="text-white-50 small mb-0">React & TypeScript</p>
@@ -57,7 +57,7 @@ const AboutMe: React.FC = () => {
                   <p className="text-white-50 small mb-0">100% Success Rate</p>
                 </div>
                 <div className="about-journey-card">
-                  <i className="fas fa-rocket"></i>
+                    <i className="fas fa-rocket"></i>
                   <h5 className="text-white mb-1">Focus</h5>
                   <p className="text-white-50 small mb-0">Scalable Solutions</p>
                   <p className="text-white-50 small mb-0">User Experience</p>
@@ -113,16 +113,16 @@ const AboutMe: React.FC = () => {
                   <div className="text-center p-3">
                     <div className="mb-3" style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)', color: '#aa00ff' }}>
                       <i className="fas fa-check-circle"></i>
-                    </div>
+                  </div>
                     <h5 className="text-white mb-2" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Deployment Success</h5>
                     <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
                       Maintained 100% deployment success rate with GitHub Pages
                     </p>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

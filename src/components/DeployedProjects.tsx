@@ -5,6 +5,25 @@ const DeployedProjects: React.FC = () => {
 
   const deployedProjects = [
     {
+      id: 8,
+      title: "Finance App - Personal Finance Management",
+      description: "A modern, fullstack personal finance management application. Fastify (Node.js) backend, React (Vite) frontend.",
+      technologies: ["Fastify", "Node.js", "React", "Vite", "JWT", "Chart.js"],
+      demoLink: "https://github.com/AlperDog/finance-app-fullstack",
+      githubLink: "https://github.com/AlperDog/finance-app-fullstack",
+      image: "fas fa-coins",
+      status: "Live",
+      lastUpdated: "2025",
+      features: [
+        "Income/Expense Tracking",
+        "Category and Budget Management",
+        "Financial Analytics",
+        "Secure Login with JWT",
+        "Modern Dashboard UI"
+      ],
+      category: "Full-Stack"
+    },
+    {
       id: 0,
       title: "Poll App - Real-Time Cross-Platform Polling (Flagship)",
       description: "A cross-platform, real-time polling app built with Flutter and a modern Go backend. Instantly create, join, and visualize live polls with beautiful charts and WebSocket-powered updates. Designed as the centerpiece of my portfolio.",
@@ -147,7 +166,7 @@ const DeployedProjects: React.FC = () => {
   return (
     <section id="deployed-projects" className="py-5">
       <div className="container">
-        <h2 className="section-title">Live Applications</h2>
+        <h2 className="section-title">Projects</h2>
         <p className="text-center text-white-50 mb-5" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>
           A showcase of my deployed applications, each demonstrating different aspects of modern web development 
           from full-stack applications to interactive tools and games.
@@ -162,14 +181,14 @@ const DeployedProjects: React.FC = () => {
                   <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-rocket"></i>
                   </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>7 Projects</h5>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>8 Projects</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Total Applications</p>
                 </div>
                 <div className="col-md-3 col-6 mb-3">
                   <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#28a745' }}>
                     <i className="fas fa-check-circle"></i>
                   </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>4 Live</h5>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>5 Live</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Deployed & Running</p>
                 </div>
                 <div className="col-md-3 col-6 mb-3">
@@ -231,75 +250,74 @@ const DeployedProjects: React.FC = () => {
                   <>
                     <p className="text-white-50 mb-3" style={{ fontSize: 'clamp(0.85rem, 2vw, 1rem)', lineHeight: '1.6' }}>{project.description}</p>
                     {/* Key Features */}
-                <div className="mb-3">
+                    <div className="mb-3">
                       <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.85rem, 2vw, 1rem)' }}>
                         <i className="fas fa-star me-2" style={{ color: '#aa00ff' }}></i>
                         Key Features
                       </h6>
-                  <div className="row g-2">
-                    {project.features.map((feature, index) => (
-                      <div key={index} className="col-6">
+                      <div className="row g-2">
+                        {project.features.map((feature, index) => (
+                          <div key={index} className="col-6">
                             <small className="text-white-50 d-flex align-items-center" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.85rem)' }}>
                               <i className="fas fa-check me-2" style={{ color: '#aa00ff', fontSize: '0.7rem' }}></i>
-                          {feature}
-                        </small>
+                              {feature}
+                            </small>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
+                    </div>
                     {/* Technologies */}
-                <div className="mb-3">
+                    <div className="mb-3">
                       <h6 className="text-white mb-2" style={{ fontSize: 'clamp(0.85rem, 2vw, 1rem)' }}>
                         <i className="fas fa-tools me-2" style={{ color: '#aa00ff' }}></i>
                         Technologies
                       </h6>
-                  <div className="d-flex flex-wrap gap-1">
-                    {project.technologies.map((tech, index) => (
+                      <div className="d-flex flex-wrap gap-1">
+                        {project.technologies.map((tech, index) => (
                           <span key={index} className="badge bg-secondary" style={{ 
                             fontSize: 'clamp(0.6rem, 2vw, 0.75rem)',
                             padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)'
                           }}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                     {/* Action Buttons */}
                     <div className="d-flex gap-2 mt-auto mb-2 justify-content-center" style={{ gap: 'clamp(0.5rem, 2vw, 0.75rem) !important' }}>
-                  <a 
-                    href={project.demoLink} 
-                    className="btn btn-custom btn-sm flex-fill"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                      <a 
+                        href={project.demoLink} 
+                        className="btn btn-custom btn-sm flex-fill"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style={{ 
                           fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
                           padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
                         }}
-                  >
-                    <i className="fas fa-external-link-alt me-2"></i>
+                      >
+                        <i className="fas fa-external-link-alt me-2"></i>
                         {project.status === 'Live' ? 'Live Demo' : 'View Project'}
-                  </a>
-                  <a 
-                    href={project.githubLink} 
-                    className="btn btn-outline-light btn-sm flex-fill"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                      </a>
+                      <a 
+                        href={project.githubLink} 
+                        className="btn btn-outline-light btn-sm flex-fill"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style={{ 
                           fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
                           padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)'
                         }}
-                  >
-                    <i className="fab fa-github me-2"></i>
-                    Source Code
-                  </a>
-                </div>
+                      >
+                        <i className="fab fa-github me-2"></i>
+                        Source Code
+                      </a>
+                    </div>
                   </>
                 )}
               </div>
             </div>
           ))}
         </div>
-        
         {/* Call to action */}
         <div className="row mt-5">
           <div className="col-12 text-center">
@@ -343,4 +361,4 @@ const DeployedProjects: React.FC = () => {
   );
 };
 
-export default DeployedProjects; 
+export default DeployedProjects;
