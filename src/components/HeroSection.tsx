@@ -118,10 +118,8 @@ const HeroSection: React.FC = () => {
             </div>
           <div className="hero-actions">
             <a
-              href="https://www.linkedin.com/in/dogramacialper/"
+              href="#contact"
               className="btn primary"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <i className="fas fa-briefcase"></i> Hire Me
             </a>
