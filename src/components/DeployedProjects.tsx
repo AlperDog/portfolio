@@ -44,13 +44,13 @@ const DeployedProjects: React.FC = () => {
     },
     {
       id: 0,
-      title: "Poll App - Real-Time Cross-Platform Polling (Flagship)",
-      description: "A cross-platform, real-time polling app built with Flutter and a modern Go backend. Instantly create, join, and visualize live polls with beautiful charts and WebSocket-powered updates. Designed as the centerpiece of my portfolio.",
+      title: "Poll App - Real-Time Cross-Platform Polling",
+      description: "A cross-platform, real-time polling app built with Flutter and a modern Go backend. Instantly create, join, and visualize live polls with beautiful charts and WebSocket-powered updates.",
       technologies: ["Flutter", "Go (Fiber/Echo)", "WebSocket", "JWT", "PostgreSQL", "Redis", "Docker", "Riverpod", "fl_chart"],
       demoLink: "https://github.com/AlperDog/poll_app",
       githubLink: "https://github.com/AlperDog/poll_app",
       image: "fas fa-poll",
-      status: "Flagship",
+      status: "In Development",
       lastUpdated: "2025",
       features: [
         "Real-time Voting",
@@ -207,14 +207,14 @@ const DeployedProjects: React.FC = () => {
                   <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#28a745' }}>
                     <i className="fas fa-check-circle"></i>
                   </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>5 Live</h5>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>4 Live</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Deployed & Running</p>
                 </div>
                 <div className="col-md-3 col-6 mb-3">
                   <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#ffc107' }}>
                     <i className="fas fa-code"></i>
                   </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>3 In Dev</h5>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>4 In Dev</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Under Development</p>
                 </div>
                 <div className="col-md-3 col-6 mb-3">

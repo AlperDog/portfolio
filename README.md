@@ -25,7 +25,7 @@ A modern, full-stack personal finance management application with Fastify backen
 
 ### Poll App - Real-Time Cross-Platform Polling
 
-- **Status**: 🚀 Live
+- **Status**: 🔧 In Development
 - **Tech Stack**: Flutter, Go (Fiber/Echo), WebSocket, JWT, PostgreSQL, Redis, Docker, Riverpod, fl_chart
 - **Key Features**: Real-time voting, cross-platform (Android, iOS, Web, Desktop), JWT auth & guest access, live results with charts, admin dashboard, modern UI & responsive design, scalable Go backend, Docker-ready
 - **GitHub**: [https://github.com/AlperDog/poll_app](https://github.com/AlperDog/poll_app)
