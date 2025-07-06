@@ -14,31 +14,50 @@ I specialize in React, TypeScript, and Node.js, creating applications that are n
 
 ## 🚀 Featured Projects
 
-### Poll App - Real-Time Cross-Platform Polling (Flagship)
+### Finance App - Personal Finance Management (Flagship)
 
-- **Status**: Flagship Project
+- **Status**: 🏆 Flagship Project
+- **Tech Stack**: Fastify, Node.js, React, Vite, JWT, Chart.js, TypeScript
+- **Key Features**: Income/expense tracking, category and budget management, financial analytics, secure login with JWT, modern dashboard UI, real-time data visualization
+- **GitHub**: [https://github.com/AlperDog/finance-app-fullstack](https://github.com/AlperDog/finance-app-fullstack)
+
+A modern, full-stack personal finance management application with Fastify backend and React frontend. Features comprehensive financial tracking, analytics, and secure user authentication.
+
+### Poll App - Real-Time Cross-Platform Polling
+
+- **Status**: 🚀 Live
 - **Tech Stack**: Flutter, Go (Fiber/Echo), WebSocket, JWT, PostgreSQL, Redis, Docker, Riverpod, fl_chart
 - **Key Features**: Real-time voting, cross-platform (Android, iOS, Web, Desktop), JWT auth & guest access, live results with charts, admin dashboard, modern UI & responsive design, scalable Go backend, Docker-ready
 - **GitHub**: [https://github.com/AlperDog/poll_app](https://github.com/AlperDog/poll_app)
 
-A cross-platform, real-time polling app built with Flutter and a modern Go backend. Instantly create, join, and visualize live polls with beautiful charts and WebSocket-powered updates. Designed as the centerpiece of my portfolio.
+A cross-platform, real-time polling app built with Flutter and a modern Go backend. Instantly create, join, and visualize live polls with beautiful charts and WebSocket-powered updates.
+
+### Real-Time IoT Dashboard
+
+- **Status**: 🔧 In Development
+- **Tech Stack**: React 18, TypeScript, Node.js, Express, Socket.io, Chart.js, Tailwind CSS, MongoDB, Redis, Docker
+- **Key Features**: Real-time data streaming with WebSocket, interactive charts (line, bar, gauge), device management & monitoring, real-time alerts & notifications, data analytics & trend analysis, scalable microservices architecture, Docker containerization
+- **GitHub**: [https://github.com/AlperDog/Real-Time-IoT-Dashboard](https://github.com/AlperDog/Real-Time-IoT-Dashboard)
+
+A modern, scalable real-time dashboard for IoT data visualization and analytics. Features live sensor data streaming, interactive charts, and comprehensive device management with a microservices-ready backend.
 
 ### Watch Party - Collaborative Streaming Platform
 
-- **Status**: In Development
+- **Status**: 🔧 In Development
 - **Tech Stack**: TypeScript, React, Node.js, WebRTC, Socket.io
 - **Key Features**: Real-time video synchronization, live chat, room management, WebRTC implementation
 - **GitHub**: [https://github.com/AlperDog/watch-party](https://github.com/AlperDog/watch-party)
 
 ### Social Media Hashtag Trend Analyzer
 
-- **Status**: In Development
+- **Status**: 🔧 In Development
 - **Tech Stack**: React, Node.js, MongoDB, Twitter API, YouTube API, NLP
 - **Key Features**: Multi-platform API integration, real-time data processing, AI/ML implementation, data visualization
 - **GitHub**: [https://github.com/AlperDog/hashtag-analyzer](https://github.com/AlperDog/hashtag-analyzer)
 
 ### Task Management App
 
+- **Status**: 🚀 Live
 - **Live Demo**: [https://AlperDog.github.io/task-manager-app](https://AlperDog.github.io/task-manager-app)
 - **Tech Stack**: React 18, TypeScript, Bootstrap 5, LocalStorage, CRUD Operations
 - **Key Features**: Drag & drop interface, real-time updates, Kanban board, priority levels, responsive design
@@ -46,6 +65,7 @@ A cross-platform, real-time polling app built with Flutter and a modern Go backe
 
 ### Weather Dashboard
 
+- **Status**: 🚀 Live
 - **Live Demo**: [https://AlperDog.github.io/weather-dashboard-app](https://AlperDog.github.io/weather-dashboard-app)
 - **Tech Stack**: React 18, TypeScript, Weather API, Geolocation, Bootstrap 5, Chart.js
 - **Key Features**: Location-based weather data, 5-day forecast, interactive maps, data visualization
@@ -53,27 +73,38 @@ A cross-platform, real-time polling app built with Flutter and a modern Go backe
 
 ### Stopwatch App
 
-- **Live Demo**: [https://AlperDog.github.io/stopwatch-app](https://AlperDog.github.io/stopwatch-app)
+- **Status**: 🚀 Live
+- **Live Demo**: [https://alperdog.github.io/stopwatch-app](https://alperdog.github.io/stopwatch-app)
 - **Tech Stack**: React 18, TypeScript, Bootstrap 5, CSS3
 - **Key Features**: Millisecond precision, lap timing, clean TypeScript implementation, responsive design
 - **GitHub**: [https://github.com/AlperDog/stopwatch-app](https://github.com/AlperDog/stopwatch-app)
+
+### Virtual Pet App
+
+- **Status**: 🚀 Live
+- **Live Demo**: [https://alperdog.github.io/pet-app](https://alperdog.github.io/pet-app)
+- **Tech Stack**: React, Bootstrap 5, Game Logic, LocalStorage
+- **Key Features**: Pet care system, evolving mechanics, mobile responsive, interactive design
+- **GitHub**: [https://github.com/AlperDog/pet-app](https://github.com/AlperDog/pet-app)
 
 ## 🛠️ Technical Skills
 
 ### Core Technologies
 
-- **Frontend**: React 18, TypeScript, JavaScript (ES6+), HTML5, CSS3
-- **Backend**: Node.js, Express.js, REST APIs
-- **Database**: MongoDB, LocalStorage
-- **UI/UX**: Bootstrap 5, Responsive Design, CSS Animations
+- **Frontend**: React 18, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Chart.js
+- **Backend**: Node.js, Express.js, Go (Golang), Fastify, REST APIs, Socket.io
+- **Mobile**: Flutter, Dart, Riverpod
+- **Database**: MongoDB, PostgreSQL, Redis, LocalStorage
+- **DevOps**: Docker, Docker Compose, Vite
+- **UI/UX**: Bootstrap 5, Responsive Design, CSS Animations, Data Visualization
 - **Real-time**: WebSocket, Socket.io, WebRTC
-- **Tools**: Git, npm, VS Code, GitHub Pages
+- **Tools**: Git, GitHub, VS Code, npm, GitHub Pages
 
 ### Skill Levels
 
-- **Expert**: React, JavaScript, HTML5
-- **Advanced**: TypeScript, Node.js, Bootstrap, Git, REST APIs, UI/UX Design
-- **Intermediate**: Real-time Communication, Database Design
+- **Expert**: React 18, TypeScript, JavaScript, HTML5, Node.js, Express.js, Git, GitHub
+- **Advanced**: Go, Flutter, Dart, Fastify, Socket.io, MongoDB, PostgreSQL, Redis, Docker, Tailwind CSS, Chart.js, Bootstrap, REST APIs, UI/UX Design
+- **Intermediate**: Riverpod, Database Design, Real-time Communication
 
 ## 💼 Professional Strengths
 
@@ -86,11 +117,14 @@ A cross-platform, real-time polling app built with Flutter and a modern Go backe
 
 ## 🎯 Key Achievements
 
-- Built 6+ production-ready web applications
-- Implemented real-time features using WebSocket technology
+- Built 9+ production-ready applications across web and mobile platforms
+- Implemented real-time features using WebSocket technology and Socket.io
 - Integrated multiple third-party APIs and services
 - Maintained 100% deployment success rate with GitHub Pages
-- Developed applications with modern TypeScript patterns
+- Developed applications with modern TypeScript patterns and React 18
+- Created cross-platform mobile applications with Flutter
+- Implemented scalable backend solutions with Go and Node.js
+- Utilized containerization with Docker for deployment
 
 ## 📫 Let's Connect
 
