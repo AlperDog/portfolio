@@ -5,6 +5,25 @@ const DeployedProjects: React.FC = () => {
 
   const deployedProjects = [
     {
+      id: 9,
+      title: "Real-Time IoT Dashboard",
+      description: "A modern, scalable real-time dashboard for IoT data visualization and analytics built with React, Node.js, and TypeScript. Features live sensor data streaming, interactive charts, and comprehensive device management.",
+      technologies: ["React 18", "TypeScript", "Node.js", "Express", "Socket.io", "Chart.js", "Tailwind CSS", "MongoDB", "Redis", "Docker"],
+      demoLink: "https://github.com/AlperDog/Real-Time-IoT-Dashboard",
+      githubLink: "https://github.com/AlperDog/Real-Time-IoT-Dashboard",
+      image: "fas fa-chart-line",
+      status: "In Development",
+      lastUpdated: "2025",
+      features: [
+        "Real-time Data Streaming",
+        "Interactive Charts & Analytics",
+        "Device Management",
+        "WebSocket Communication",
+        "Docker Containerization"
+      ],
+      category: "Full-Stack"
+    },
+    {
       id: 8,
       title: "Finance App - Personal Finance Management",
       description: "A modern, fullstack personal finance management application. Fastify (Node.js) backend, React (Vite) frontend.",
@@ -12,7 +31,7 @@ const DeployedProjects: React.FC = () => {
       demoLink: "https://github.com/AlperDog/finance-app-fullstack",
       githubLink: "https://github.com/AlperDog/finance-app-fullstack",
       image: "fas fa-coins",
-      status: "Live",
+      status: "Flagship",
       lastUpdated: "2025",
       features: [
         "Income/Expense Tracking",
@@ -181,7 +200,7 @@ const DeployedProjects: React.FC = () => {
                   <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#aa00ff' }}>
                     <i className="fas fa-rocket"></i>
                   </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>8 Projects</h5>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>9 Projects</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Total Applications</p>
                 </div>
                 <div className="col-md-3 col-6 mb-3">
@@ -195,7 +214,7 @@ const DeployedProjects: React.FC = () => {
                   <div style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', color: '#ffc107' }}>
                     <i className="fas fa-code"></i>
                   </div>
-                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>2 In Dev</h5>
+                  <h5 className="text-white mt-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>3 In Dev</h5>
                   <p className="text-white-50 small" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>Under Development</p>
                 </div>
                 <div className="col-md-3 col-6 mb-3">

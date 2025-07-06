@@ -6,7 +6,7 @@ interface Skill {
   color: string;
   description: string;
   level: 'Expert' | 'Advanced' | 'Intermediate';
-  category: 'Frontend' | 'Backend' | 'Tools' | 'Design' | 'Database';
+  category: 'Frontend' | 'Backend' | 'Mobile' | 'Tools' | 'Design' | 'Database' | 'DevOps';
 }
 
 const Skills: React.FC = () => {
@@ -17,10 +17,10 @@ const Skills: React.FC = () => {
   const skills: Skill[] = [
     // Frontend Skills
     { 
-      name: 'React', 
+      name: 'React 18', 
       icon: 'fab fa-react', 
       color: '#61DAFB', 
-      description: 'Component-based architecture, hooks, state management, and modern React patterns.',
+      description: 'Modern React with hooks, concurrent features, suspense, and component-based architecture.',
       level: 'Expert',
       category: 'Frontend'
     },
@@ -28,8 +28,8 @@ const Skills: React.FC = () => {
       name: 'TypeScript', 
       icon: 'fab fa-js-square', 
       color: '#3178C6', 
-      description: 'Type-safe development, interfaces, generics, and advanced TypeScript features.',
-      level: 'Advanced',
+      description: 'Type-safe development, interfaces, generics, and advanced TypeScript patterns.',
+      level: 'Expert',
       category: 'Frontend'
     },
     { 
@@ -38,6 +38,22 @@ const Skills: React.FC = () => {
       color: '#F7DF1E', 
       description: 'ES6+, async/await, DOM manipulation, and modern JavaScript patterns.',
       level: 'Expert',
+      category: 'Frontend'
+    },
+    { 
+      name: 'Tailwind CSS', 
+      icon: 'fab fa-css3-alt', 
+      color: '#06B6D4', 
+      description: 'Utility-first CSS framework, responsive design, and modern styling approaches.',
+      level: 'Advanced',
+      category: 'Frontend'
+    },
+    { 
+      name: 'Chart.js', 
+      icon: 'fas fa-chart-line', 
+      color: '#FF6384', 
+      description: 'Interactive data visualization, real-time charts, and responsive analytics.',
+      level: 'Advanced',
       category: 'Frontend'
     },
     { 
@@ -79,23 +95,15 @@ const Skills: React.FC = () => {
       icon: 'fab fa-node-js', 
       color: '#339933', 
       description: 'Backend development, REST APIs, Express.js, and server-side logic.',
-      level: 'Advanced',
+      level: 'Expert',
       category: 'Backend'
     },
     { 
-      name: 'REST APIs', 
-      icon: 'fas fa-plug', 
-      color: '#ff9800', 
-      description: 'API design, integration, authentication, and third-party service consumption.',
+      name: 'Go (Golang)', 
+      icon: 'fab fa-golang', 
+      color: '#00ADD8', 
+      description: 'High-performance backend development with Fiber/Echo frameworks and concurrent programming.',
       level: 'Advanced',
-      category: 'Backend'
-    },
-    { 
-      name: 'Real-time Communication', 
-      icon: 'fas fa-broadcast-tower', 
-      color: '#00bcd4', 
-      description: 'WebSocket, Socket.io, real-time data synchronization, and live features.',
-      level: 'Intermediate',
       category: 'Backend'
     },
     { 
@@ -103,8 +111,66 @@ const Skills: React.FC = () => {
       icon: 'fas fa-server', 
       color: '#4caf50', 
       description: 'Web application framework, middleware, routing, and API development.',
+      level: 'Expert',
+      category: 'Backend'
+    },
+    { 
+      name: 'Fastify', 
+      icon: 'fas fa-bolt', 
+      color: '#FF6600', 
+      description: 'Fast and low overhead web framework for Node.js with excellent performance.',
       level: 'Advanced',
       category: 'Backend'
+    },
+    { 
+      name: 'Socket.io', 
+      icon: 'fas fa-broadcast-tower', 
+      color: '#010101', 
+      description: 'Real-time bidirectional communication, WebSocket implementation, and live data streaming.',
+      level: 'Expert',
+      category: 'Backend'
+    },
+    { 
+      name: 'REST APIs', 
+      icon: 'fas fa-plug', 
+      color: '#ff9800', 
+      description: 'API design, integration, authentication, and third-party service consumption.',
+      level: 'Expert',
+      category: 'Backend'
+    },
+    { 
+      name: 'JWT Authentication', 
+      icon: 'fas fa-shield-alt', 
+      color: '#FF6B6B', 
+      description: 'Secure authentication, token-based authorization, and session management.',
+      level: 'Advanced',
+      category: 'Backend'
+    },
+
+    // Mobile Development
+    { 
+      name: 'Flutter', 
+      icon: 'fab fa-android', 
+      color: '#02569B', 
+      description: 'Cross-platform mobile development, Dart programming, and native performance.',
+      level: 'Advanced',
+      category: 'Mobile'
+    },
+    { 
+      name: 'Dart', 
+      icon: 'fas fa-code', 
+      color: '#00B4AB', 
+      description: 'Object-oriented programming language for Flutter development and mobile apps.',
+      level: 'Advanced',
+      category: 'Mobile'
+    },
+    { 
+      name: 'Riverpod', 
+      icon: 'fas fa-cube', 
+      color: '#FF6B6B', 
+      description: 'State management solution for Flutter with dependency injection and reactive programming.',
+      level: 'Intermediate',
+      category: 'Mobile'
     },
 
     // Database Skills
@@ -113,7 +179,23 @@ const Skills: React.FC = () => {
       icon: 'fas fa-database', 
       color: '#4caf50', 
       description: 'NoSQL database, data modeling, CRUD operations, and database optimization.',
-      level: 'Intermediate',
+      level: 'Advanced',
+      category: 'Database'
+    },
+    { 
+      name: 'PostgreSQL', 
+      icon: 'fas fa-database', 
+      color: '#336791', 
+      description: 'Relational database management, complex queries, and data integrity.',
+      level: 'Advanced',
+      category: 'Database'
+    },
+    { 
+      name: 'Redis', 
+      icon: 'fas fa-memory', 
+      color: '#DC382D', 
+      description: 'In-memory data structure store, caching, and real-time data management.',
+      level: 'Advanced',
       category: 'Database'
     },
     { 
@@ -121,17 +203,33 @@ const Skills: React.FC = () => {
       icon: 'fas fa-sitemap', 
       color: '#9c27b0', 
       description: 'Data modeling, schema design, relationships, and performance optimization.',
-      level: 'Intermediate',
+      level: 'Advanced',
       category: 'Database'
     },
 
-    // Tools & Version Control
+    // DevOps & Tools
+    { 
+      name: 'Docker', 
+      icon: 'fab fa-docker', 
+      color: '#2496ED', 
+      description: 'Containerization, microservices deployment, and development environment management.',
+      level: 'Advanced',
+      category: 'DevOps'
+    },
+    { 
+      name: 'Docker Compose', 
+      icon: 'fas fa-layer-group', 
+      color: '#2496ED', 
+      description: 'Multi-container applications, service orchestration, and development workflows.',
+      level: 'Advanced',
+      category: 'DevOps'
+    },
     { 
       name: 'Git', 
       icon: 'fab fa-git-alt', 
       color: '#F05032', 
       description: 'Version control, branching strategies, collaboration, and CI/CD workflows.',
-      level: 'Advanced',
+      level: 'Expert',
       category: 'Tools'
     },
     { 
@@ -139,7 +237,7 @@ const Skills: React.FC = () => {
       icon: 'fab fa-github', 
       color: '#333', 
       description: 'Repository management, pull requests, code review, and project collaboration.',
-      level: 'Advanced',
+      level: 'Expert',
       category: 'Tools'
     },
     { 
@@ -147,6 +245,14 @@ const Skills: React.FC = () => {
       icon: 'fas fa-code', 
       color: '#007acc', 
       description: 'Advanced code editing, debugging, extensions, and development workflow.',
+      level: 'Expert',
+      category: 'Tools'
+    },
+    { 
+      name: 'Vite', 
+      icon: 'fas fa-bolt', 
+      color: '#646CFF', 
+      description: 'Fast build tool and development server for modern web applications.',
       level: 'Advanced',
       category: 'Tools'
     },
@@ -168,12 +274,22 @@ const Skills: React.FC = () => {
       level: 'Intermediate',
       category: 'Design'
     },
+    { 
+      name: 'Data Visualization', 
+      icon: 'fas fa-chart-bar', 
+      color: '#FF6384', 
+      description: 'Interactive charts, real-time analytics, and data-driven user interfaces.',
+      level: 'Advanced',
+      category: 'Design'
+    },
   ];
 
   const categories = [
     { name: 'Frontend', icon: 'fas fa-desktop', color: '#61DAFB' },
     { name: 'Backend', icon: 'fas fa-server', color: '#339933' },
+    { name: 'Mobile', icon: 'fas fa-mobile-alt', color: '#02569B' },
     { name: 'Database', icon: 'fas fa-database', color: '#4caf50' },
+    { name: 'DevOps', icon: 'fas fa-cloud', color: '#2496ED' },
     { name: 'Tools', icon: 'fas fa-tools', color: '#F05032' },
     { name: 'Design', icon: 'fas fa-palette', color: '#aa00ff' }
   ];

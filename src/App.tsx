@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection';
 import AboutMe from './components/AboutMe';
 import Skills from './components/Skills';
 import DeployedProjects from './components/DeployedProjects';
+import IoTDashboard from './components/IoTDashboard';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
@@ -34,6 +35,7 @@ function App() {
         <AboutMe />
         <Skills />
         <DeployedProjects />
+        <IoTDashboard />
         <Contact />
       </main>
       <Footer />
