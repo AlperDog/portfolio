@@ -50,7 +50,7 @@ const DeployedProjects: React.FC = () => {
       demoLink: "https://github.com/AlperDog/poll_app",
       githubLink: "https://github.com/AlperDog/poll_app",
       image: "fas fa-poll",
-      status: "In Development",
+      status: "Live",
       lastUpdated: "2025",
       features: [
         "Real-time Voting",
@@ -62,7 +62,7 @@ const DeployedProjects: React.FC = () => {
         "Scalable Go Backend",
         "Docker-ready"
       ],
-      category: "Full-Stack"
+      category: "Frontend"
     },
     {
       id: 1,
