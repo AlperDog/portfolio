@@ -12,7 +12,7 @@ const DeployedProjects: React.FC = () => {
       demoLink: "https://github.com/AlperDog/Real-Time-IoT-Dashboard",
       githubLink: "https://github.com/AlperDog/Real-Time-IoT-Dashboard",
       image: "fas fa-chart-line",
-      status: "In Development",
+      status: "Live",
       lastUpdated: "2025",
       features: [
         "Real-time Data Streaming",
@@ -72,7 +72,7 @@ const DeployedProjects: React.FC = () => {
       demoLink: "https://github.com/AlperDog/watch-party",
       githubLink: "https://github.com/AlperDog/watch-party",
       image: "fas fa-video",
-      status: "In Development",
+      status: "Live",
       lastUpdated: "2024",
       features: ["Real-time Sync", "WebRTC", "Live Chat", "Room Management"],
       category: "Full-Stack"
@@ -85,7 +85,7 @@ const DeployedProjects: React.FC = () => {
       demoLink: "https://github.com/AlperDog/hashtag-analyzer",
       githubLink: "https://github.com/AlperDog/hashtag-analyzer",
       image: "fas fa-hashtag",
-      status: "In Development",
+      status: "Maintenance",
       lastUpdated: "2024",
       features: ["Real-time Analysis", "Multi-platform", "AI Integration", "Data Visualization"],
       category: "Full-Stack"
